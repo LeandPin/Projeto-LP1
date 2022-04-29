@@ -10,16 +10,17 @@ Todos os códigos foram desenvolvidos utilizando a linguagem c++.</br>
 Os desenvolvedores deste projeto são estudantes do curso de Engenharia da computação da universidade federal da Paraíba -`UFPB`.</br>
 Sinta-se a vontade para utilizar os códigos deste repositório para fins de aprendizagem.
 
-### 🌍 Onde nos encontrar:
+---
 
-Caso queira discutir sobre algum código, ou solicitar ajuda pode nos contatar através desses e-mails:
+### 🧑 Colaboradores:
 
-##### Anderson Andrade : </br>
-[![Gmail](https://img.shields.io/badge/Gmail-darkred?style=platic&logo=gmail&logoColor=white)](mailto:)
-##### Leanderson Pinheiro : </br>
-[![Gmail](https://img.shields.io/badge/Gmail-darkred?style=platic&logo=gmail&logoColor=white)](mailto:leandersonpinheiro20@gmail.com)
-##### Pedro Cavalcante : </br>
-[![Gmail](https://img.shields.io/badge/Gmail-darkred?style=platic&logo=gmail&logoColor=white)](mailto:pedro.ricardo@academico.ufpb.br)
+Caso queira discutir sobre algum código, ou solicitar ajuda pode nos contatar através desses perfis:
 
+* Anderson Andrade : 
+[![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)]()
+* Leanderson Pinheiro : 
+[![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)](https://github.com/LeandPin)
+* Pedro Cavalcante : 
+[![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)](https://github.com/CavalcantePedro)
 
 ---
