@@ -9,3 +9,12 @@ Operador::~Operador()
 {
 
 }
+void Operador::ExibirLista(){
+
+}
+void Operador::ImprimirFolhaSalarial(){
+
+}
+void Operador::CalcularFolhaSalarial(){
+
+}
