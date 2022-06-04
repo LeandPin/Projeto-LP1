@@ -20,9 +20,6 @@ public:
     virtual void CalcularFolhaSalarial();
     void ImprimirFolhaSalarial();
 
-private:
-vector <Diretor*> diretor;
-
 };
 
 #endif
