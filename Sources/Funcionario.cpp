@@ -10,24 +10,6 @@ Funcionario::~Funcionario()
 
 }
 
-string Funcionario::Editarcodigo(){
-
-}
-string Funcionario::EditarEndereco(){
-
-}
-string Funcionario::EditarTelefone(){
-
-}
-string Funcionario::EditarIngressao(){
-
-}
-string Funcionario::EditarDesignacao(){
-
-}
-string Funcionario::EditarSalario(){
-
-}
 void Funcionario::setCodigo(string codigo){
 
     Codigo = codigo;
@@ -41,8 +23,9 @@ void Funcionario::setEndereco(string endereco){
 void Funcionario::setTelefone(string telefone){
     Telefone = telefone;
 }
-void Funcionario::setDataIngressao(string ingressao){
-    DataIngressao = ingressao;
+void Funcionario::setDia(string dia){
+    Dia = dia;
+   
 }
 void Funcionario::setDesignacao(string design){
         Designacao = design;
@@ -64,31 +47,26 @@ string Funcionario::getEndereco(){
 string Funcionario::getTelefone(){
     return Telefone;
 }
-string Funcionario::getIngressao(){
-    return DataIngressao;
+string Funcionario::getDia(){
+    return Dia;
 }
 string Funcionario::getDesignacao(){
  return Designacao;
+}
+
+void Funcionario::setMes(string mes){
+         Mes = mes;
+}
+void Funcionario::setAno(string ano){
+         Ano = ano;
+}
+string Funcionario::getMes(){
+ return Mes;
+}
+string Funcionario::getAno(){
+ return Ano;
 }
 double Funcionario::getSalario(){
     return Salario;
 }
 
-void Funcionario::ExcluirRegistro(string codigo){
-
-}
-void Funcionario::ExibirRegistro(string codigo){
-
-}
-void Funcionario::ExibirLista(){
-
-}
-void Funcionario::Busca(){
-
-}
-void Funcionario::CalcularFolhaSalarial(){
-
-}
-void Funcionario::ImprimirFolhaSalarial(){
-    
-}
