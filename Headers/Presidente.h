@@ -9,9 +9,6 @@ class Presidente : public Funcionario
 public:
     Presidente();
     ~Presidente();
-    void ExibirLista();
-    void ExibirRegistro();
-    void CalcularFolhaSalarial();
     void setAreaFormacao(string formacao);
     void setFormacaoAcademica(string graduacao);
     string getAreaFormacao();
