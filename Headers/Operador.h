@@ -10,7 +10,7 @@ public:
     Operador();
     ~Operador();
     void ExibirLista();
-    void ImprimirFolhaSalarial();
+    void ExibirRegistro();
     void CalcularFolhaSalarial();
     
 

@@ -10,7 +10,7 @@ public:
     Presidente();
     ~Presidente();
     void ExibirLista();
-    void ImprimirFolhaSalarial();
+    void ExibirRegistro();
     void CalcularFolhaSalarial();
     void setAreaFormacao(string formacao);
     void setFormacaoAcademica(string graduacao);

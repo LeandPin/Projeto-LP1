@@ -10,7 +10,7 @@ public:
     Gerente();
     ~Gerente();
     void ExibirLista();
-    void ImprimirFolhaSalarial();
+    void ExibirRegistro();
     void CalcularFolhaSalarial();
     void setAreaSupervisao(string supervisao);
     string getAreaSupervisao();
