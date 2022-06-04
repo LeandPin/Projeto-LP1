@@ -9,9 +9,6 @@ class Gerente : public Funcionario
 public:
     Gerente();
     ~Gerente();
-    void ExibirLista();
-    void ExibirRegistro();
-    void CalcularFolhaSalarial();
     void setAreaSupervisao(string supervisao);
     string getAreaSupervisao();
 

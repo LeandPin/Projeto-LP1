@@ -9,15 +9,11 @@ class Diretor : public Funcionario
 public:
     Diretor();
     ~Diretor();
-    void CalcularFolhaSalarial();
-    void ExibirRegistro();
-    void ExibirLista();
     void setAreaFormacao(string formacao);
     void setAreaSupervisao(string supervisao);
-    void BuscaDiretor(string cod);
     string getAreaFormacao();
     string getAreaSupervisao();
-    void ImprimirFolhaSalarial();
+
     
 
 

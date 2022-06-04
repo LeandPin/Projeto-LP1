@@ -8,11 +8,7 @@ class Operador : public Funcionario
 {
 public:
     Operador();
-    ~Operador();
-    void ExibirLista();
-    void ExibirRegistro();
-    void CalcularFolhaSalarial();
-    
+    ~Operador();    
 
 private:
 
