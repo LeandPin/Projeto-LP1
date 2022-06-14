@@ -4,7 +4,6 @@ Operador::Operador()
 {
 
 }
-
 Operador::~Operador()
 {
 

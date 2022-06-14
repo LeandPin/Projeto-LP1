@@ -4,21 +4,23 @@ Presidente::Presidente()
 {
 
 }
-
 Presidente::~Presidente()
 {
 
 }
-void Presidente::setAreaFormacao(string formacao){
+void Presidente::setAreaFormacao(string formacao)
+{
  AreaFormacao = formacao;
 }
 void Presidente::setFormacaoAcademica(string graduacao)
 {
  FormacaoAcademica = graduacao;
 }
-string Presidente::getAreaFormacao(){
+string Presidente::getAreaFormacao()
+{
  return AreaFormacao;
 }
-string Presidente::getFormacaoAcademica(){
+string Presidente::getFormacaoAcademica()
+{
     return FormacaoAcademica;
 }

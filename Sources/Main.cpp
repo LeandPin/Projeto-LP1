@@ -1,12 +1,12 @@
 #include <iostream>
-#include  <string.h>
+#include <vector>
+#include <string.h>
 #include <opencv2/opencv.hpp>
 #include "../Headers/Diretor.h"
 #include "../Headers/Funcionario.h"
 #include "../Headers/Gerente.h"
 #include "../Headers/Operador.h"
 #include "../Headers/Presidente.h"
-#include <vector>
 
 using namespace cv;
 using namespace std;

@@ -4,15 +4,16 @@ Gerente::Gerente()
 {
 
 }
-
 Gerente::~Gerente()
 {
 
 }
-void Gerente::setAreaSupervisao(string supervisao){
+void Gerente::setAreaSupervisao(string supervisao)
+{
 AreaSupervisao = supervisao;
 }
-string Gerente::getAreaSupervisao(){
+string Gerente::getAreaSupervisao()
+{
  return AreaSupervisao;
 }
 

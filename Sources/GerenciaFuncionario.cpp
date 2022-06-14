@@ -4,12 +4,10 @@ GerenciaFuncionario::GerenciaFuncionario()
 {
 
 }
-
 GerenciaFuncionario::~GerenciaFuncionario()
 {
 
 }
-
 void GerenciaFuncionario::BuscaFuncionario(string cod) 
 {
     //Função Apenas com lógica implementada, aqui realiza a busca parcial, com uso da função find.//
@@ -18,42 +16,38 @@ void GerenciaFuncionario::BuscaFuncionario(string cod)
     
  /*for (int i = 0; i < n; i++)
     {
-     if(Funcionario[i].getNome().find(cod) != string ::npos ){
+     if(Funcionario[i].getNome().find(cod) != string ::npos )
+     {
       cont ++;
      }
           
     }
-    if(cont == 0){
+    if(cont == 0)
+    {
     cout << "Funcionario não encontrado" << endl;
     }
-    */
+*/
 }
-
 string GerenciaFuncionario::EditarDados()
 {
 
 }
-
 void GerenciaFuncionario::ExcluirRegistro(string codigo)
 {
 
 }
-
 void GerenciaFuncionario::ExibirLista()
 {
 
 }
-
 void GerenciaFuncionario::Busca()
 {
 
 }
-
 void GerenciaFuncionario::CalcularFolhaSalarial()
 {
 
 }
-
 void GerenciaFuncionario::ImprimirFolhaSalarial()
 {
     
