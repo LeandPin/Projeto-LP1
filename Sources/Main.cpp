@@ -1,4 +1,5 @@
 #include <iostream>
+#include  <string.h>
 #include <opencv2/opencv.hpp>
 #include "../Headers/Diretor.h"
 #include "../Headers/Funcionario.h"
@@ -10,7 +11,7 @@
 using namespace cv;
 using namespace std;
 
-void CapturarRosto()
+void CapturarRosto(String nome)
 {
     double scale = 1.0;
     Mat img;
@@ -27,7 +28,6 @@ void CapturarRosto()
         cout<<"ERRO"<<endl;
         //return -1; //caso ela não esteja disponível eu encerro meu programa  
     }
-
     else
     {
         while (true)
@@ -71,17 +71,18 @@ void CapturarRosto()
     for (int i = 0; i < facesCortadas.size(); i++)
     {
         resize(facesCortadas[i], facesCortadas[i], Size(300,300));
-        imwrite("../Fotos/test.png",facesCortadas[i]);
+        imwrite("../Fotos/"+nome+".png",facesCortadas[i]);
     }
 }
 
 int main()
 {
-    CapturarRosto();
+    string nome = "RoertinhoDaTapioca";
+    CapturarRosto(nome);
 
 
 
-/*    string nome, codigo, endereco, telefone;
+/*  string nome, codigo, endereco, telefone;
     string cargo;
     double salario;
     string procura;
