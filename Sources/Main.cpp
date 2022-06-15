@@ -75,24 +75,46 @@ void CapturarRosto(String nome)
     }
 }
 
+void Menu()
+{
+    int escolha;
+    cout << "Escolha a operação que você deseja realizar:"<< endl;
+    cout<<" 1. Cadastrar Funcionário" << endl;
+    cout<<" 2. Exibir Funcionário"<< endl;
+    cout<<" 3. Excluir Funcionário"<< endl;
+    cout<<" 4. Exibir Lista de Funcionários"<< endl;
+    cout<<" 5. Calcular folha salarial"<< endl;
+    cout<<" 6. Editar Funcionário"<< endl;
+    cin >> escolha;
+    switch (escolha)
+    {
+    case 1:
+        //Cadastrar Funcionário
+        break;
+    case 2:
+        //Exibir Funcionário
+        break;
+    case 3:
+        //Excluir Funcionário
+        break;
+    case 4:
+        //Exibir Lista de Funcionŕios
+        break;
+    case 5:
+        //Calcular folha salarial
+        break;
+    case 6:
+        //Editar Funcionário
+        break;
+    default:
+        break;
+    }
+    
+}
+
 int main()
 {
-    string nome = "RoertinhoDaTapioca";
-    CapturarRosto(nome);
+    Menu();
 
-
-
-/*  string nome, codigo, endereco, telefone;
-    string cargo;
-    double salario;
-    string procura;
-    string Dia, mes, ano;
-    
-        Funcionario *diretor = new Diretor();
-
-        vector <Funcionario> diretor;
-
-  */      
     return 0;
-
 }
