@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <fstream>
 #include <opencv2/opencv.hpp>
 #include "../Headers/Diretor.h"
 #include "../Headers/Funcionario.h"
 #include "../Headers/Gerente.h"
-#include "../Headers/Operador.h"
 #include "../Headers/Presidente.h"
 
 using namespace cv;
@@ -75,7 +75,84 @@ void CapturarRosto(String nome)
     }
 }
 
-void Menu()
+void salvarArquivo(vector<Funcionario *> func) {
+    fstream fs;
+    fs.open("dados.txt", fstream::out);
+    
+    if (!fs.is_open()) {
+        cout << "Erro ao abrir arquivo para escrita\n";
+        return;
+    }
+
+    for (int i = 0; i < func.size(); i++) {
+        fs << func[i]->getTipo() << endl;
+        fs << func[i]->getCodigo() << endl;
+        fs << func[i]->getNome() << endl;
+        fs << func[i]->getTelefone() << endl;
+        fs << func[i]->getData() << endl;
+        fs << func[i]->getSalario() << endl;
+        /*if (func[i]->getTipo() == 2)
+            fs << ((Consultor*)func[i])->getPercentual() << endl;*/
+    }
+    fs.close();
+}
+
+vector<Funcionario*> CadastrarFunc()
+{
+    cout << "Quantos Funcionários você deseja cadastrar" << endl;
+    int quant, tipo;
+    string codigo, nome, telefone;
+    string data;
+    double salario;
+    Funcionario * f;
+    vector<Funcionario *> func;
+    cin >> quant;
+    for (int i = 0; i < quant; i++) 
+    {
+        cout << "Qual tipo de Funcionários você deseja cadastrar" << endl;
+        cout<<" 1. Operador" << endl;
+        cout<<" 2. Gerente"<< endl;
+        cout<<" 3. Diretor"<< endl;
+        cout<<" 4. Presidente"<< endl;
+        cin >> tipo;
+
+        switch (tipo) {
+            case 1:
+                f = new Funcionario();
+                break;
+            case 2:
+                f = new Gerente();
+                break;
+            case 3:
+                f = new Diretor();
+                break;
+            case 4:
+                f = new Presidente();
+                break;
+        }
+
+        cin.ignore();
+        cout << "Digite o código do Funcionário: " << endl;
+        getline(cin, codigo);
+        cout << "Digite o Nome do Funcionário: " << endl;
+        getline(cin, nome);
+        cout << "Digite o telefone para contato do Funcionário: " << endl;
+        getline(cin, telefone);
+        cout << "Digite a data de admissão do Funcionário: " << endl;
+        getline(cin, data);
+        cout << "Digite o salário do Funcionário: " << endl;
+        cin >> salario;
+        f ->setCodigo(codigo);
+        f ->setNome(nome);
+        f ->setTelefone(telefone);
+        f ->setData(data);
+        f ->setSalario(salario);
+        func.push_back(f);
+    }
+    return func;
+}
+
+int Menu()
 {
     int escolha;
     cout << "Escolha a operação que você deseja realizar:"<< endl;
@@ -86,10 +163,18 @@ void Menu()
     cout<<" 5. Calcular folha salarial"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
     cin >> escolha;
+    return escolha;
+}
+
+int main()
+{
+    vector<Funcionario*> funcionarios;
+    int escolha = Menu();
     switch (escolha)
     {
     case 1:
-        //Cadastrar Funcionário
+        funcionarios = CadastrarFunc();
+        salvarArquivo(funcionarios);
         break;
     case 2:
         //Exibir Funcionário
@@ -109,12 +194,5 @@ void Menu()
     default:
         break;
     }
-    
-}
-
-int main()
-{
-    Menu();
-
     return 0;
 }

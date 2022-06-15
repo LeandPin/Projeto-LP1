@@ -2,7 +2,7 @@
 
 Diretor::Diretor():Funcionario()
 {
-
+  tipo = 3;
 }
 Diretor::~Diretor()
 {

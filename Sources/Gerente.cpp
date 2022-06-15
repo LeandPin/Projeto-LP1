@@ -2,7 +2,7 @@
 
 Gerente::Gerente()
 {
-
+    tipo = 2;
 }
 Gerente::~Gerente()
 {

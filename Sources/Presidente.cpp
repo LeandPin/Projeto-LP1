@@ -2,7 +2,7 @@
 
 Presidente::Presidente()
 {
-
+    tipo = 4;
 }
 Presidente::~Presidente()
 {

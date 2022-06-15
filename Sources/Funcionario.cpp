@@ -2,7 +2,7 @@
 
 Funcionario::Funcionario()
 {
-
+    tipo = 1;
 }
 Funcionario::~Funcionario()
 {
@@ -16,21 +16,13 @@ void Funcionario::setNome(string nome)
 {
     Nome = nome;
 }
-void Funcionario::setEndereco(string endereco)
-{
- Endereco = endereco;
-}
 void Funcionario::setTelefone(string telefone)
 {
     Telefone = telefone;
 }
-void Funcionario::setDia(string dia)
+void Funcionario::setData(string data)
 {
-    Dia = dia;   
-}
-void Funcionario::setDesignacao(string design)
-{
-    Designacao = design;
+    this -> data = data;   
 }
 void Funcionario::setSalario(double salario)
 {
@@ -45,41 +37,19 @@ string Funcionario::getNome()
 {
     return Nome;
 }
-string Funcionario::getEndereco()
-{
-    return Endereco;
-}
 string Funcionario::getTelefone()
 {
     return Telefone;
 }
-string Funcionario::getDia()
+string Funcionario::getData()
 {
-    return Dia;
-}
-string Funcionario::getDesignacao()
-{
- return Designacao;
+    return data;
 }
 
-void Funcionario::setMes(string mes)
-{
-    Mes = mes;
-}
-void Funcionario::setAno(string ano)
-{
-    Ano = ano;
-}
-string Funcionario::getMes()
-{
- return Mes;
-}
-string Funcionario::getAno()
-{
- return Ano;
-}
 double Funcionario::getSalario()
 {
     return Salario;
 }
-
+int Funcionario::getTipo() {
+    return tipo;
+}

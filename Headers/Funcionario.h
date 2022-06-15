@@ -14,27 +14,21 @@ public:
     ~Funcionario();
     void setCodigo(string codigo);
     void setNome(string nome);
-    void setEndereco(string endereco);
     void setTelefone(string telefone);
-    void setDia(string dia);
-    void setDesignacao(string design);
+    void setData(string data);
     void setSalario(double salario);
-    void setMes(string mes);
-    void setAno(string ano);
+    int getTipo();
     string getCodigo();
     string getNome();
-    string getEndereco();
     string getTelefone();
-    string getDia();
-    string getDesignacao();
-    string getMes();
-    string getAno();
+    string getData();
     double getSalario();
    
 
 protected:
-    string Codigo, Nome, Endereco, Telefone;
-    string Dia, Mes, Ano, Designacao;
+    int tipo;
+    string Codigo, Nome, Telefone;
+    string data;
     double Salario;
 
 private:
