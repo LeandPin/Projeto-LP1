@@ -75,7 +75,7 @@ void CapturarRosto(String nome)
     }
 }
 
-void salvarArquivo(vector<Funcionario *> func) {
+void SalvarArquivo(vector<Funcionario *> func) {
     fstream fs;
     fs.open("dados.txt", fstream::out);
     
@@ -97,7 +97,54 @@ void salvarArquivo(vector<Funcionario *> func) {
     fs.close();
 }
 
-vector<Funcionario*> CadastrarFunc()
+vector<Funcionario*> LerArquivo() {
+    vector<Funcionario *> func;
+    Funcionario *f;
+    fstream fs;
+    int quant, tipo;
+    string codigo, nome, telefone;
+    string data;
+    double salario;
+    fs.open("dados.txt", fstream::in);
+    
+    if (!fs.is_open()) 
+    {
+        cout << "Erro ao abrir arquivo para leitura\n";
+        return func;
+    }
+    
+    while (!fs.eof()) {
+        fs >> tipo;
+        if (fs.eof())
+        {
+            break;
+        }
+        fs.ignore();
+        getline(fs, codigo);
+        getline(fs, nome);
+        getline(fs, telefone);
+        getline(fs, data);
+        fs >> salario;
+
+        if (tipo == 1)
+            f = new Funcionario();
+        
+        /*else if (tipo == 2) {
+            fs >> per;
+            f = new Consultor(per);
+        }*/
+        f ->setCodigo(codigo);
+        f ->setNome(nome);
+        f ->setTelefone(telefone);
+        f ->setData(data);
+        f ->setSalario(salario);
+        func.push_back(f);
+    }
+    fs.close();
+    return func;
+}
+
+void CadastrarFunc(vector<Funcionario *>* func)
 {
     cout << "Quantos Funcionários você deseja cadastrar" << endl;
     int quant, tipo;
@@ -105,7 +152,6 @@ vector<Funcionario*> CadastrarFunc()
     string data;
     double salario;
     Funcionario * f;
-    vector<Funcionario *> func;
     cin >> quant;
     for (int i = 0; i < quant; i++) 
     {
@@ -147,9 +193,8 @@ vector<Funcionario*> CadastrarFunc()
         f ->setTelefone(telefone);
         f ->setData(data);
         f ->setSalario(salario);
-        func.push_back(f);
+        func->push_back(f);
     }
-    return func;
 }
 
 int Menu()
@@ -169,12 +214,14 @@ int Menu()
 int main()
 {
     vector<Funcionario*> funcionarios;
+    funcionarios = LerArquivo();
     int escolha = Menu();
+    
     switch (escolha)
     {
     case 1:
-        funcionarios = CadastrarFunc();
-        salvarArquivo(funcionarios);
+        CadastrarFunc(&funcionarios);
+        SalvarArquivo(funcionarios);
         break;
     case 2:
         //Exibir Funcionário
