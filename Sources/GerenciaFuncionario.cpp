@@ -1,5 +1,6 @@
 #include "../Headers/GerenciaFuncionario.h"
 
+
 GerenciaFuncionario::GerenciaFuncionario()
 {
 
@@ -10,31 +11,31 @@ GerenciaFuncionario::~GerenciaFuncionario()
 }
 void GerenciaFuncionario::BuscaFuncionario(string cod) 
 {
-    //Função Apenas com lógica implementada, aqui realiza a busca parcial, com uso da função find.//
     
-    //Para realizar a busca com código, é só comparar com == o parametro e o objeto referente ao codigo do func//
-    
- /*for (int i = 0; i < n; i++)
-    {
-     if(Funcionario[i].getNome().find(cod) != string ::npos )
-     {
-      cont ++;
-     }
-          
+}
+void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func)
+{
+    for (int i = 0; i < func.size(); i++) {
+        if(cod == func[i]->getCodigo())
+        {
+            cout << "Código: "<<func[i]->getCodigo() << endl;
+            cout << "Nome: "<<func[i]->getNome() << endl;
+            cout << "Telefone: "<<func[i]->getTelefone() << endl;
+            cout << "Data de admissão: "<<func[i]->getData() << endl;
+            cout << "Salário: "<<func[i]->getSalario() << endl;
+        /*if (func[i]->getTipo() == 2)
+                cout << " - Per: " << ((Consultor*)func[i])->getPercentual();*/
+        }
+        
+        
     }
-    if(cont == 0)
-    {
-    cout << "Funcionario não encontrado" << endl;
-    }
-*/
 }
 string GerenciaFuncionario::EditarDados()
 {
-
 }
-void GerenciaFuncionario::ExcluirRegistro(string codigo)
+void GerenciaFuncionario::ExcluirRegistro(string cod)
 {
-
+    
 }
 void GerenciaFuncionario::ExibirLista()
 {

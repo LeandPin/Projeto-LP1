@@ -1,6 +1,7 @@
 #ifndef GERENCIAFUNCIONARIO_H
 #define GERENCIAFUNCIONARIO_H
-#include "../Headers/Diretor.h"
+#include "Funcionario.h"
+#include <iostream>
 #include <vector>
 #include <string>
 
@@ -13,8 +14,8 @@ public:
     ~GerenciaFuncionario();
     void BuscaFuncionario(string cod);
     string EditarDados();
-    void ExcluirRegistro(string codigo);
-    virtual void ExibirRegistro();
+    void ExcluirRegistro(string cod);
+    void ExibirRegistro(string cod, vector <Funcionario *> func);
     virtual void ExibirLista();
     void Busca();
     virtual void CalcularFolhaSalarial();
