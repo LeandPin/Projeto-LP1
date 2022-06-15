@@ -12,10 +12,16 @@ GerenciaFuncionario::~GerenciaFuncionario()
 void GerenciaFuncionario::BuscaFuncionario(string cod,  vector <Funcionario *> func) 
 {
     //Função Busca Parcialmente Pelo nome
-    int cont =0;
+        int cont =0;
       for (int i = 0; i < func.size(); i++) {
-        if(func[i]->getNome().find(cod) != string ::npos ){
+    if(func[i]->getNome().find(cod) != string ::npos ){
       cont ++;
+    cout << "Código: "<<func[i]->getCodigo() << endl;
+    cout << "Nome: "<<func[i]->getNome() << endl;
+    cout << "Telefone: "<<func[i]->getTelefone() << endl;
+    cout << "Data de admissão: "<<func[i]->getData() << endl;
+    cout << "Salário: "<<func[i]->getSalario() << endl;
+    
      }
           
     }
