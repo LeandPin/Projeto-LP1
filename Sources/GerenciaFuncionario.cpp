@@ -40,6 +40,8 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
             cout << "Telefone: "<<func[i]->getTelefone() << endl;
             cout << "Data de admissão: "<<func[i]->getData() << endl;
             cout << "Salário: "<<func[i]->getSalario() << endl;
+            cod = "open ../Fotos/"+cod+".png";
+            system(cod.c_str());
         /*if (func[i]->getTipo() == 2)
                 cout << " - Per: " << ((Consultor*)func[i])->getPercentual();*/
         }
