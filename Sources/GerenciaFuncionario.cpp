@@ -9,9 +9,20 @@ GerenciaFuncionario::~GerenciaFuncionario()
 {
 
 }
-void GerenciaFuncionario::BuscaFuncionario(string cod) 
+void GerenciaFuncionario::BuscaFuncionario(string cod,  vector <Funcionario *> func) 
 {
-    
+    //Função Busca Parcialmente Pelo nome
+    int cont =0;
+      for (int i = 0; i < func.size(); i++) {
+        if(func[i]->getNome().find(cod) != string ::npos ){
+      cont ++;
+     }
+          
+    }
+    if(cont == 0){
+    cout << "Funcionario não encontrado" << endl;
+    }
+      
 }
 void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func)
 {
