@@ -11,7 +11,7 @@
 using namespace cv;
 using namespace std;
 
-void CapturarRosto(String nome)
+void CapturarRosto(String cod)
 {
     double scale = 1.0;
     Mat img;
@@ -25,7 +25,7 @@ void CapturarRosto(String nome)
 
     if (!cap.isOpened()) //verifico se ela não está aberta
     {
-        cout<<"ERRO"<<endl;
+        cout<<"ERRO: A camera não foi aberta"<<endl;
         //return -1; //caso ela não esteja disponível eu encerro meu programa  
     }
     else
@@ -47,13 +47,9 @@ void CapturarRosto(String nome)
                 }
                 else if (k == 27) // se apertar esc ele encerra o programa
                 {
-                    break;
-                    //return 0;
-                }
-                else // se não apertar nem s nem esc ele continua no loop
-                {
                     continue;
-                }    
+                    //return 0;
+                } 
             }
         }
         
@@ -71,7 +67,7 @@ void CapturarRosto(String nome)
     for (int i = 0; i < facesCortadas.size(); i++)
     {
         resize(facesCortadas[i], facesCortadas[i], Size(300,300));
-        imwrite("../Fotos/"+nome+".png",facesCortadas[i]);
+        imwrite("../Fotos/"+cod+".png",facesCortadas[i]);
     }
 }
 
@@ -97,7 +93,7 @@ void SalvarArquivo(vector<Funcionario *> func) {
     fs.close();
 }
 
-vector<Funcionario*> LerArquivo() {
+vector<Funcionario *> LerArquivo() {
     vector<Funcionario *> func;
     Funcionario *f;
     fstream fs;
@@ -188,6 +184,11 @@ void CadastrarFunc(vector<Funcionario *>* func)
         getline(cin, data);
         cout << "Digite o salário do Funcionário: " << endl;
         cin >> salario;
+        cout << "Será realizado a captura da face do Funcioário cadastrado, intruções para a captura ser bem sucedida :"<< endl;
+        cout << "1. Imagem nitida olhando para camêra com um boa iluminação" << endl;
+        cout << "2. Digite qualquer tecla para estar capturando a foto"<<endl;
+        cout << "3. Caso a foto ficou agradavél para você basta apertar a tecla \" S\" para estar salvando, caso a foto não tenha ficado agradável basta apertar qualquer tecla diferente de \"S\" para estar realizando uma nova captura" << endl;
+        CapturarRosto(codigo);
         f ->setCodigo(codigo);
         f ->setNome(nome);
         f ->setTelefone(telefone);

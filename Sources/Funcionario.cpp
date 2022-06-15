@@ -45,7 +45,6 @@ string Funcionario::getData()
 {
     return data;
 }
-
 double Funcionario::getSalario()
 {
     return Salario;
