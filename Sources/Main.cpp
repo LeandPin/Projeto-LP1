@@ -205,6 +205,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
 
 int Menu()
 {
+    system("clear||cls");
     int escolha;
     cout << "Escolha a operação que você deseja realizar:"<< endl;
     cout<<" 1. Cadastrar Funcionário" << endl;
@@ -224,33 +225,42 @@ int main()
     GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
     funcionarios = LerArquivo();
-    int escolha = Menu();
     
-    switch (escolha)
+    while (1)
     {
-    case 1:
-        CadastrarFunc(&funcionarios);
-        SalvarArquivo(funcionarios);
-        break;
-    case 2:
-        cin.ignore();
-        getline(cin,cod);
-        gerenciador->ExibirRegistro(cod, funcionarios);
-        break;
-    case 3:
-        //Excluir Funcionário
-        break;
-    case 4:
-        //Exibir Lista de Funcionŕios
-        break;
-    case 5:
-        //Calcular folha salarial
-        break;
-    case 6:
-        //Editar Funcionário
-        break;
-    default:
-        break;
+        int escolha = Menu();
+        switch (escolha)
+        {
+        case 1:
+            CadastrarFunc(&funcionarios);
+            SalvarArquivo(funcionarios);
+            break;
+        case 2:
+            cin.ignore();
+            cout << "Digite o Codigo do Funcionário: " << endl;
+            getline(cin,cod);
+            gerenciador->ExibirRegistro(cod, funcionarios);
+            cin.ignore();
+            break;
+        case 3:
+            //Excluir Funcionário
+            break;
+        case 4:
+            cin.ignore();
+            gerenciador->ExibirLista(funcionarios);
+            cin.ignore();
+            break;
+        case 5:
+            //Calcular folha salarial
+            break;
+        case 6:
+            //Editar Funcionário
+            break;
+        default:
+            break;
+        }
     }
+    
+    
     return 0;
 }

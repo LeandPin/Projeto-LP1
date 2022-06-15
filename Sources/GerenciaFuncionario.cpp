@@ -26,10 +26,9 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
         /*if (func[i]->getTipo() == 2)
                 cout << " - Per: " << ((Consultor*)func[i])->getPercentual();*/
         }
-        
-        
     }
 }
+
 string GerenciaFuncionario::EditarDados()
 {
 }
@@ -37,9 +36,13 @@ void GerenciaFuncionario::ExcluirRegistro(string cod)
 {
     
 }
-void GerenciaFuncionario::ExibirLista()
-{
 
+void GerenciaFuncionario::ExibirLista(vector <Funcionario *> func)
+{
+    for (int i = 0; i < func.size(); i++) 
+    {
+        cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << endl;
+    }
 }
 void GerenciaFuncionario::Busca()
 {

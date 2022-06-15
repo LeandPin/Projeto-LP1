@@ -16,7 +16,7 @@ public:
     string EditarDados();
     void ExcluirRegistro(string cod);
     void ExibirRegistro(string cod, vector <Funcionario *> func);
-    virtual void ExibirLista();
+    void ExibirLista(vector <Funcionario *> func);
     void Busca();
     virtual void CalcularFolhaSalarial();
     void ImprimirFolhaSalarial();
