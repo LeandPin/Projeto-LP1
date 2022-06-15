@@ -12,7 +12,7 @@ class GerenciaFuncionario : public Funcionario
 public:
     GerenciaFuncionario();
     ~GerenciaFuncionario();
-    void BuscaFuncionario(string cod);
+    void BuscaFuncionario(string cod,vector <Funcionario *> func);
     string EditarDados();
     void ExcluirRegistro(string cod);
     void ExibirRegistro(string cod, vector <Funcionario *> func);
