@@ -3,6 +3,7 @@
 #include <string.h>
 #include <fstream>
 #include <opencv2/opencv.hpp>
+#include "../Headers/GerenciaFuncionario.h"
 #include "../Headers/Diretor.h"
 #include "../Headers/Funcionario.h"
 #include "../Headers/Gerente.h"
@@ -142,6 +143,7 @@ vector<Funcionario *> LerArquivo() {
 
 void CadastrarFunc(vector<Funcionario *>* func)
 {
+    system("clear||cls");
     cout << "Quantos Funcionários você deseja cadastrar" << endl;
     int quant, tipo;
     string codigo, nome, telefone;
@@ -149,6 +151,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
     double salario;
     Funcionario * f;
     cin >> quant;
+    system("clear||cls");
     for (int i = 0; i < quant; i++) 
     {
         cout << "Qual tipo de Funcionários você deseja cadastrar" << endl;
@@ -157,7 +160,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
         cout<<" 3. Diretor"<< endl;
         cout<<" 4. Presidente"<< endl;
         cin >> tipo;
-
+        system("clear||cls");
         switch (tipo) {
             case 1:
                 f = new Funcionario();
@@ -184,6 +187,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
         getline(cin, data);
         cout << "Digite o salário do Funcionário: " << endl;
         cin >> salario;
+        system("clear||cls");
         cout << "Será realizado a captura da face do Funcioário cadastrado, intruções para a captura ser bem sucedida :"<< endl;
         cout << "1. Imagem nitida olhando para camêra com um boa iluminação" << endl;
         cout << "2. Digite qualquer tecla para estar capturando a foto"<<endl;
@@ -195,11 +199,13 @@ void CadastrarFunc(vector<Funcionario *>* func)
         f ->setData(data);
         f ->setSalario(salario);
         func->push_back(f);
+        system("clear||cls");
     }
 }
 
 int Menu()
 {
+    system("clear||cls");
     int escolha;
     cout << "Escolha a operação que você deseja realizar:"<< endl;
     cout<<" 1. Cadastrar Funcionário" << endl;
@@ -209,38 +215,52 @@ int Menu()
     cout<<" 5. Calcular folha salarial"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
     cin >> escolha;
+    system("clear||cls");
     return escolha;
 }
 
 int main()
 {
+    string cod;
+    GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
     funcionarios = LerArquivo();
-    int escolha = Menu();
     
-    switch (escolha)
+    while (1)
     {
-    case 1:
-        CadastrarFunc(&funcionarios);
-        SalvarArquivo(funcionarios);
-        break;
-    case 2:
-        //Exibir Funcionário
-        break;
-    case 3:
-        //Excluir Funcionário
-        break;
-    case 4:
-        //Exibir Lista de Funcionŕios
-        break;
-    case 5:
-        //Calcular folha salarial
-        break;
-    case 6:
-        //Editar Funcionário
-        break;
-    default:
-        break;
+        int escolha = Menu();
+        switch (escolha)
+        {
+        case 1:
+            CadastrarFunc(&funcionarios);
+            SalvarArquivo(funcionarios);
+            break;
+        case 2:
+            cin.ignore();
+            cout << "Digite o Codigo do Funcionário: " << endl;
+            getline(cin,cod);
+            gerenciador->ExibirRegistro(cod, funcionarios);
+            cin.ignore();
+            break;
+        case 3:
+            //Excluir Funcionário
+            break;
+        case 4:
+            cin.ignore();
+            gerenciador->ExibirLista(funcionarios);
+            cin.ignore();
+            break;
+        case 5:
+            //Calcular folha salarial
+            break;
+        case 6:
+            //Editar Funcionário
+            break;
+        default:
+            break;
+        }
     }
+    
+    
     return 0;
 }
