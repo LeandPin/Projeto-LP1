@@ -214,6 +214,7 @@ int Menu()
     cout<<" 4. Exibir Lista de Funcionários"<< endl;
     cout<<" 5. Calcular folha salarial"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
+    cout<<" 7. Busca Funcionário"<< endl;
     cin >> escolha;
     system("clear||cls");
     return escolha;
@@ -221,7 +222,8 @@ int Menu()
 
 int main()
 {
-    string cod;
+    string cod, compara;
+    int opc;
     GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
     funcionarios = LerArquivo();
@@ -255,6 +257,17 @@ int main()
             break;
         case 6:
             //Editar Funcionário
+            break;
+        case 7:
+            cin.ignore();
+            cout << "Digite 1 para buscar funcionário por nome, 2 por data de admissão" << endl;
+            cin >> opc;
+            cin.ignore();
+            cout << "Digite para a busca" << endl;
+            getline(cin, compara);
+            gerenciador->BuscaFuncionario(opc,compara, funcionarios);
+            cin.ignore();
+
             break;
         default:
             break;

@@ -9,10 +9,14 @@ GerenciaFuncionario::~GerenciaFuncionario()
 {
 
 }
-void GerenciaFuncionario::BuscaFuncionario(string cod,  vector <Funcionario *> func) 
+void GerenciaFuncionario::BuscaFuncionario(int tipo,string cod,  vector <Funcionario *> func) 
 {
-    //Função Busca Parcialmente Pelo nome
-        int cont =0;
+
+    int cont =0;
+
+
+
+    if(tipo == 1){
       for (int i = 0; i < func.size(); i++) {
     if(func[i]->getNome().find(cod) != string ::npos ){
       cont ++;
@@ -27,6 +31,27 @@ void GerenciaFuncionario::BuscaFuncionario(string cod,  vector <Funcionario *> f
     }
     if(cont == 0){
     cout << "Funcionario não encontrado" << endl;
+    }
+    }
+
+    if(tipo == 2){
+    for (int i = 0; i < func.size(); i++) {
+    
+    if(func[i]->getData().find(cod) != string ::npos ){
+    
+    cont ++;
+    cout << "Código: "<<func[i]->getCodigo() << endl;
+    cout << "Nome: "<<func[i]->getNome() << endl;
+    cout << "Telefone: "<<func[i]->getTelefone() << endl;
+    cout << "Data de admissão: "<<func[i]->getData() << endl;
+    cout << "Salário: "<<func[i]->getSalario() << endl;
+    
+     }
+          
+    }
+    if(cont == 0){
+    cout << "Funcionario não encontrado" << endl;
+    }
     }
 }
 void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func)
