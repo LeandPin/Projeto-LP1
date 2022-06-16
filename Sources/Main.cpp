@@ -247,7 +247,7 @@ int main()
             break;
         case 4:
             cin.ignore();
-            gerenciador->ExibirLista(funcionarios);
+            gerenciador->ExibirListaGeral(funcionarios);
             cin.ignore();
             break;
         case 5:
