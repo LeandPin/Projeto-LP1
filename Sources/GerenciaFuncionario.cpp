@@ -8,15 +8,16 @@ GerenciaFuncionario::~GerenciaFuncionario()
 {
 
 }
-void GerenciaFuncionario::BuscaFuncionario(string cod) 
+void GerenciaFuncionario::BuscaFuncionario(int tipobusca,string cod) 
 {
     //Função Apenas com lógica implementada, aqui realiza a busca parcial, com uso da função find.//
     
     //Para realizar a busca com código, é só comparar com == o parametro e o objeto referente ao codigo do func//
-    
- /*for (int i = 0; i < n; i++)
+    int cont;
+ for (int i = 0; i < 1; i++)
+
     {
-     if(Funcionario[i].getNome().find(cod) != string ::npos )
+     if(1)
      {
       cont ++;
      }
@@ -26,7 +27,7 @@ void GerenciaFuncionario::BuscaFuncionario(string cod)
     {
     cout << "Funcionario não encontrado" << endl;
     }
-*/
+
 }
 string GerenciaFuncionario::EditarDados()
 {
@@ -36,9 +37,17 @@ void GerenciaFuncionario::ExcluirRegistro(string codigo)
 {
 
 }
-void GerenciaFuncionario::ExibirLista()
+void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario*>* func)
 {
+   
+    for(int i = 0; i < func->size(); i++){
+       cout <<"Exibindo Nome do Funcionário: "<< endl;
+        
+    }
+}
 
+void ExibirListaTipo(){
+    
 }
 void GerenciaFuncionario::Busca()
 {
