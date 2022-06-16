@@ -214,7 +214,7 @@ int Menu()
     cout<<" 4. Exibir Lista de Funcionários"<< endl;
     cout<<" 5. Calcular folha salarial"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
-    cout<<" 7. Busca Funcionário"<< endl;
+    cout<<" 7. Buscar Funcionário"<< endl;
     cin >> escolha;
     system("clear||cls");
     return escolha;
@@ -233,41 +233,48 @@ int main()
         int escolha = Menu();
         switch (escolha)
         {
-        case 1:
+        case 1: //Cadastrar Funcionário
             CadastrarFunc(&funcionarios);
             SalvarArquivo(funcionarios);
             break;
-        case 2:
+        case 2: //Exibir Funcionário
             cin.ignore();
             cout << "Digite o Codigo do Funcionário: " << endl;
             getline(cin,cod);
             gerenciador->ExibirRegistro(cod, funcionarios);
             cin.ignore();
             break;
-        case 3:
-            //Excluir Funcionário
+        case 3: //Excluir Funcionário //FALTA APAGAR FOTO
+            cin.ignore();
+            cout << "Digite o Codigo do Funcionário que deseja excluir: " << endl;
+            getline(cin,cod);
+            funcionarios = gerenciador->ExcluirRegistro(cod, funcionarios);
+            SalvarArquivo(funcionarios);
             break;
-        case 4:
+        case 4: //Exibir Lista de Funcionário //FAlTA TIPOS
             cin.ignore();
             gerenciador->ExibirListaGeral(funcionarios);
             cin.ignore();
             break;
-        case 5:
+        case 5://Calcular folha salaria
             //Calcular folha salarial
             break;
-        case 6:
-            //Editar Funcionário
+        case 6://Editar Funcionário //FALTA FOTO E TIPO
+            cin.ignore();
+            cout << "Digite o Codigo do Funcionário que deseja editar: " << endl;
+            getline(cin,cod);
+            gerenciador->EditarDados(cod, funcionarios);
+            SalvarArquivo(funcionarios);
             break;
-        case 7:
+        case 7://Buscar Funcionário
             cin.ignore();
-            cout << "Digite 1 para buscar funcionário por nome, 2 por data de admissão" << endl;
+            cout << "Escolha a operação que você deseja realizar:"<< endl;
+            cout<<" 1. Busca por nome" << endl;
+            cout<<" 2. Busca por data de adimissão"<< endl;
+            cout<<" 3. Busca por endereço"<< endl;
             cin >> opc;
+            gerenciador->Busca(opc, funcionarios);
             cin.ignore();
-            cout << "Digite para a busca" << endl;
-            getline(cin, compara);
-            gerenciador->BuscaFuncionario(opc,compara, funcionarios);
-            cin.ignore();
-
             break;
         default:
             break;

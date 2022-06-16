@@ -11,12 +11,13 @@ class GerenciaFuncionario : public Funcionario
 public:
     GerenciaFuncionario();
     ~GerenciaFuncionario();
-    void BuscaFuncionario(string cod,vector <Funcionario *> func);
-    string EditarDados();
-    void ExcluirRegistro(string cod);
+   
+    void EditarDados(string cod, vector <Funcionario *> func);
+    vector <Funcionario *> ExcluirRegistro(string cod, vector <Funcionario *> func);
     void ExibirRegistro(string cod, vector <Funcionario *> func);
     void ExibirListaGeral(vector <Funcionario *> func);
-    void Busca();
+    void Busca(int tipo, vector <Funcionario *> func);
+    
     virtual void CalcularFolhaSalarial();
     void ImprimirFolhaSalarial();
 
