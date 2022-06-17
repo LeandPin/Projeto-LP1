@@ -68,12 +68,14 @@ void SalvarArquivo(vector<Funcionario *> func) {
     fstream fs;
     fs.open("dados.txt", fstream::out);
     
-    if (!fs.is_open()) {
+    if (!fs.is_open()) 
+    {
         cout << "Erro ao abrir arquivo para escrita\n";
         return;
     }
 
-    for (int i = 0; i < func.size(); i++) {
+    for (int i = 0; i < func.size(); i++) 
+    {
         fs << func[i]->getTipo() << endl;
         fs << func[i]->getCodigo() << endl;
         fs << func[i]->getNome() << endl;
@@ -81,8 +83,6 @@ void SalvarArquivo(vector<Funcionario *> func) {
         fs << func[i]->getData() << endl;
         fs << func[i]->getEnd() << endl;
         fs << func[i]->getSalario() << endl;
-        /*if (func[i]->getTipo() == 2)
-            fs << ((Consultor*)func[i])->getPercentual() << endl;*/
     }
     fs.close();
 }
@@ -109,6 +109,7 @@ vector<Funcionario *> LerArquivo() {
         {
             break;
         }
+        
         fs.ignore();
         getline(fs, codigo);
         getline(fs, nome);
@@ -117,16 +118,20 @@ vector<Funcionario *> LerArquivo() {
         getline(fs, end);
         fs >> salario;
 
-        switch (tipo) {
+        switch (tipo) 
+        {
             case 1:
                 f = new Funcionario();
                 break;
+            
             case 2:
                 f = new Gerente();
                 break;
+            
             case 3:
                 f = new Diretor();
                 break;
+            
             case 4:
                 f = new Presidente();
                 break;
@@ -141,6 +146,7 @@ vector<Funcionario *> LerArquivo() {
         f ->setSalario(salario);
         func.push_back(f);
     }
+    
     fs.close();
     return func;
 }

@@ -40,8 +40,6 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
             cout << "Salário: "<<func[i]->getSalario() << endl;
             cod = "open ../Fotos/"+cod+".png";
             system(cod.c_str());
-        /*if (func[i]->getTipo() == 2)
-                cout << " - Per: " << ((Consultor*)func[i])->getPercentual();*/
         }
     }
 }
@@ -49,14 +47,16 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
 void GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
 {
     string aux;
+    double sal;
     int item;
     for (int i = 0; i < func.size(); i++) {
         if(cod == func[i]->getCodigo())
         {
             system("clear||cls");
-            cout << "O que você deseja editar :"<< endl;
-            cout<<" 1. Nome"<< endl;
+            cout << "O que você seja editar :"<< endl;
+            cout<<" 1. Endereço"<< endl;
             cout<<" 2. Telefone"<< endl;
+            cout<<" 3. Salário"<< endl;
             cin >> item;
             system("clear||cls");
             
@@ -64,21 +64,31 @@ void GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
             {
             case 1:
                 cin.ignore();
-                cout << "Digite o novo nome:" << endl;
+                cout << "Digite o novo endereço do Funcionário seguindo a seguinte formatação: " << endl;
+                cout << "R. dos pescadores, 301 - Ponta dos Seixas - João Pessoa/PB " << endl;
+                cout << "Caso seja em avenida basta mudar o \"R.\" por \"Av.\" e se for apartamento basta colocar a abreviação \"Apto.\" seguida do número, exemplo: " << endl;
+                cout << "Av. dos pescadores, 301 - Apto.401 - Ponta dos Seixas - João Pessoa/PB " << endl;
                 getline(cin, aux);
-                func[i]->setNome(aux);
+                func[i]->setEnd(aux);
                 break;
+            
             case 2:
                 cin.ignore();
                 cout << "Digite o novo telefone:" << endl;
                 getline(cin, aux);
                 func[i]->setTelefone(aux);
                 break;
+            
+            case 3:
+            cin.ignore();
+                cout << "Digite o novo salário do Funcionário: " << endl;
+                cin >> sal;
+                func[i]->setSalario(sal);
+                break;
+
             default:
                 break;
             }
-        /*if (func[i]->getTipo() == 2)
-                cout << " - Per: " << ((Consultor*)func[i])->getPercentual();*/
         }
     }
 }
@@ -132,41 +142,18 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         cout << "Digite o nome que vai ser buscado: " << endl;
         getline(cin, aux);
         for (int i = 0; i < func.size(); i++) 
-    {
-        if(func[i]->getNome().find(aux) != string ::npos )
         {
-            switch (func[i]->getTipo())
-        {
-        case 1:
-            cout << "Operador - ";
-            break;
-        case 2:
-            cout << "Gerente - ";
-            break;
-        case 3:
-            cout << "Diretor - ";
-            break;
-        case 4:
-            cout << "Presidente - ";
-            break;
-        default:
-            break;
+            if(func[i]->getNome().find(aux) != string ::npos )
+            {
+                cont ++;
+                cout << "Código: "<<func[i]->getCodigo() << endl;
+                cout << "Nome: "<<func[i]->getNome() << endl;
+                cout << "Telefone: "<<func[i]->getTelefone() << endl;
+                cout << "Data de admissão: "<<func[i]->getData() << endl;
+                cout << "Endereço: "<<func[i]->getEnd() << endl;
+                cout << "Salário: "<<func[i]->getSalario() << endl;
+            }
         }
-        
-            cont ++;
-            cout << "Código: "<<func[i]->getCodigo() << endl;
-            cout << "Nome: "<<func[i]->getNome() << endl;
-            cout << "Telefone: "<<func[i]->getTelefone() << endl;
-            cout << "Data de admissão: "<<func[i]->getData() << endl;
-            cout << "Endereço: "<<func[i]->getEnd() << endl;
-            cout << "Salário: "<<func[i]->getSalario() << endl;
-        }
-    }
-    if(cont == 0)
-    {
-        cout << "Nenhum Funcionario Encontrado" << endl;
-    }
-
         break;
         
     case 2:
@@ -177,42 +164,20 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         getline(cin, aux);
 
         for (int i = 0; i < func.size(); i++) 
-    {
-        if(func[i]->getData().find(aux) != string ::npos )
         {
-            switch (func[i]->getTipo())
-        {
-        case 1:
-            cout << "Operador - ";
-            break;
-        case 2:
-            cout << "Gerente - ";
-            break;
-        case 3:
-            cout << "Diretor - ";
-            break;
-        case 4:
-            cout << "Presidente - ";
-            break;
-        default:
-            break;
+            if(func[i]->getData().find(aux) != string ::npos )
+            {
+                cont ++;
+                cout << "Código: "<<func[i]->getCodigo() << endl;
+                cout << "Nome: "<<func[i]->getNome() << endl;
+                cout << "Telefone: "<<func[i]->getTelefone() << endl;
+                cout << "Data de admissão: "<<func[i]->getData() << endl;
+                cout << "Endereço: "<<func[i]->getEnd() << endl;
+                cout << "Salário: "<<func[i]->getSalario() << endl;
+            }
         }
-
-            cont ++;
-            cout << "Código: "<<func[i]->getCodigo() << endl;
-            cout << "Nome: "<<func[i]->getNome() << endl;
-            cout << "Telefone: "<<func[i]->getTelefone() << endl;
-            cout << "Data de admissão: "<<func[i]->getData() << endl;
-            cout << "Endereço: "<<func[i]->getEnd() << endl;
-            cout << "Salário: "<<func[i]->getSalario() << endl;
-        }
-    }
-    if(cont == 0)
-    {
-      cout << "Nenhum Funcionario Encontrado" << endl;
-    }
-
         break;
+    
     case 3:
 
      system("clear||cls");
@@ -222,48 +187,27 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         getline(cin, aux);
 
         for (int i = 0; i < func.size(); i++) 
-    {
-       
-        if(func[i]->getEnd().find(aux) != string ::npos )
         {
-            switch (func[i]->getTipo())
-        {
-        case 1:
-            cout << "Operador - ";
-            break;
-        case 2:
-            cout << "Gerente - ";
-            break;
-        case 3:
-            cout << "Diretor - ";
-            break;
-        case 4:
-            cout << "Presidente - ";
-            break;
-        default:
-            break;
+            if(func[i]->getEnd().find(aux) != string ::npos )
+            {
+                cont ++;
+                cout << "Código: "<<func[i]->getCodigo() << endl;
+                cout << "Nome: "<<func[i]->getNome() << endl;
+                cout << "Telefone: "<<func[i]->getTelefone() << endl;
+                cout << "Data de admissão: "<<func[i]->getData() << endl;
+                cout << "Endereço: "<<func[i]->getEnd() << endl;
+                cout << "Salário: "<<func[i]->getSalario() << endl;
+            }
         }
-            cont ++;
-            cout << "Código: "<<func[i]->getCodigo() << endl;
-            cout << "Nome: "<<func[i]->getNome() << endl;
-            cout << "Telefone: "<<func[i]->getTelefone() << endl;
-            cout << "Data de admissão: "<<func[i]->getData() << endl;
-            cout << "Endereço: "<<func[i]->getEnd() << endl;
-            cout << "Salário: "<<func[i]->getSalario() << endl;
-        }
-    }
-    if(cont == 0)
-    {
-      cout << "Nenhum Funcionario Encontrado" << endl;
-    }
-
         break;
     
     default:
         break;
     }
-
-    
+    if(cont == 0)
+    {
+      cout << "Nenhum Funcionario Encontrado" << endl;
+    }
 }
 
 void GerenciaFuncionario::CalcularFolhaSalarial()
