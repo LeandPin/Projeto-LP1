@@ -12,7 +12,7 @@ public:
     GerenciaFuncionario();
     ~GerenciaFuncionario();
    
-    void EditarDados(string cod, vector <Funcionario *> func);
+    int EditarDados(string cod, vector <Funcionario *> func);
     vector <Funcionario *> ExcluirRegistro(string cod, vector <Funcionario *> func);
     void ExibirRegistro(string cod, vector <Funcionario *> func);
     void ExibirListaGeral(vector <Funcionario *> func);

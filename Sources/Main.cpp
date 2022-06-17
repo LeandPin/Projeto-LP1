@@ -251,7 +251,7 @@ int Menu()
 
 int main()
 {
-    string cod, compara;
+    string cod;
     int opc;
     GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
@@ -275,12 +275,23 @@ int main()
             cin.ignore();
             break;
         
-        case 3: //Excluir Funcionário //FALTA APAGAR FOTO
+        case 3: //Excluir Funcionário
             cin.ignore();
             cout << "Digite o Codigo do Funcionário que deseja excluir: " << endl;
             getline(cin,cod);
-            funcionarios = gerenciador->ExcluirRegistro(cod, funcionarios);
-            SalvarArquivo(funcionarios);
+            cout << "Dados do funcionário que será EXCLUIDO: " << endl;
+            gerenciador->ExibirRegistro(cod, funcionarios);
+            cout << "Você realmente deseja excluir esse Funcionário ? " << endl;
+            cout << "1. SIM " << endl;
+            cout << "2. NÃO " << endl;
+            cin >> opc;
+            cin.ignore();
+            if (opc == 1)
+            {
+                funcionarios = gerenciador->ExcluirRegistro(cod, funcionarios);
+                SalvarArquivo(funcionarios);
+                cin.ignore();
+            }
             break;
         
         case 4: //Exibir Lista de Funcionário
@@ -293,11 +304,21 @@ int main()
             //Calcular folha salarial
             break;
         
-        case 6://Editar Funcionário //FALTA FOTO E TIPO E SALARIO e end
+        case 6://Editar Funcionário
             cin.ignore();
             cout << "Digite o Codigo do Funcionário que deseja editar: " << endl;
             getline(cin,cod);
-            gerenciador->EditarDados(cod, funcionarios);
+            system("clear||cls");
+            cout << "Dados do funcionário que será editado: " << endl;
+            gerenciador->ExibirRegistro(cod, funcionarios);
+            if(gerenciador->EditarDados(cod,funcionarios) == 4)
+            {
+                CapturarRosto(cod);
+            }
+            else
+            {
+                gerenciador->EditarDados(cod, funcionarios);
+            }
             SalvarArquivo(funcionarios);
             break;
         

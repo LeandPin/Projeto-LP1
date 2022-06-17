@@ -12,9 +12,12 @@ GerenciaFuncionario::~GerenciaFuncionario()
 
 void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func)
 {
-    for (int i = 0; i < func.size(); i++) {
+    int aux = 0;
+    for (int i = 0; i < func.size(); i++) 
+    {
         if(cod == func[i]->getCodigo())
-        {                
+        {       
+            aux++;        
             switch (func[i]->getTipo())
             {
             case 1:
@@ -42,21 +45,27 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
             system(cod.c_str());
         }
     }
+    if (aux == 0)
+    {
+        cout << "Nenhum funcionário encontrado" << endl;
+    }
 }
 
-void GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
+int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
 {
     string aux;
     double sal;
     int item;
-    for (int i = 0; i < func.size(); i++) {
+    for (int i = 0; i < func.size(); i++) 
+    {
         if(cod == func[i]->getCodigo())
         {
-            system("clear||cls");
+            
             cout << "O que você seja editar :"<< endl;
             cout<<" 1. Endereço"<< endl;
             cout<<" 2. Telefone"<< endl;
             cout<<" 3. Salário"<< endl;
+            cout<<" 4. Foto"<< endl;
             cin >> item;
             system("clear||cls");
             
@@ -85,12 +94,16 @@ void GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
                 cin >> sal;
                 func[i]->setSalario(sal);
                 break;
+            case 4:
+                return 4;
+                break;
 
             default:
                 break;
             }
         }
     }
+    return 1;
 }
 
 vector <Funcionario *> GerenciaFuncionario::ExcluirRegistro(string cod, vector <Funcionario *> func)
@@ -98,7 +111,17 @@ vector <Funcionario *> GerenciaFuncionario::ExcluirRegistro(string cod, vector <
     for (int i = 0; i < func.size(); i++) {
         if(cod == func[i]->getCodigo())
         {
-            func.erase(func.begin()+i);
+            if(func[i]->getTipo() < 3)
+            {
+                func.erase(func.begin()+i);
+                cod = "rm ../Fotos/"+cod+".png";
+                system(cod.c_str());
+                cout << "Funcionário Excluido com sucesso"<<endl;
+            }
+            else
+            {
+                cout << "Cargo do funcionário não permite exclusão." << endl;
+            }
         }
     }
     return func;
@@ -106,27 +129,73 @@ vector <Funcionario *> GerenciaFuncionario::ExcluirRegistro(string cod, vector <
 
 void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
 {
-    for (int i = 0; i < func.size(); i++) 
+    int aux;
+    cout << "Escolha a operação que você deseja realizar:"<< endl;
+            cout<<" 1. Exibir lista de um cargo especifico" << endl;
+            cout<<" 2. Exibir lista geral"<< endl;
+    cin >> aux;
+    cin.ignore();
+    switch (aux)
     {
-        
-        switch (func[i]->getTipo())
+    case 1:
+        cout << "Qual o cargo:"<< endl;
+            cout<<" 1. Operador" << endl;
+            cout<<" 2. Gerente"<< endl;
+            cout<<" 3. Diretor" << endl;
+            cout<<" 4. Presidente"<< endl;
+            cin >> aux;
+            cin.ignore();
+            for (int i = 0; i < func.size(); i++) 
+            {
+                if (func[i]->getTipo() == aux)
+                {
+                    switch (func[i]->getTipo())
+                    {
+                    case 1:
+                        cout << "Operador - ";
+                        break;
+                    case 2:
+                        cout << "Gerente - ";
+                        break;
+                    case 3:
+                        cout << "Diretor - ";
+                        break;
+                    case 4:
+                        cout << "Presidente - ";
+                        break;
+                    default:
+                        break;
+                    }
+                    cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << " - Salário: "<<func[i]->getSalario()<<endl;
+                }
+            }
+            break;
+    case 2:
+        for (int i = 0; i < func.size(); i++) 
         {
-        case 1:
-            cout << "Operador - ";
-            break;
-        case 2:
-            cout << "Gerente - ";
-            break;
-        case 3:
-            cout << "Diretor - ";
-            break;
-        case 4:
-            cout << "Presidente - ";
-            break;
-        default:
-            break;
-        }
-        cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << endl;
+            
+            switch (func[i]->getTipo())
+            {
+            case 1:
+                cout << "Operador - ";
+                break;
+            case 2:
+                cout << "Gerente - ";
+                break;
+            case 3:
+                cout << "Diretor - ";
+                break;
+            case 4:
+                cout << "Presidente - ";
+                break;
+            default:
+                break;
+            }
+            cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << " - Salário: "<<func[i]->getSalario()<<endl;
+        }   
+        break;
+    default:
+        break;
     }
 }
 
@@ -134,6 +203,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
 {
     int cont = 0;
     string aux;
+    
     switch (tipo)
     {
     case 1:
@@ -145,6 +215,23 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         {
             if(func[i]->getNome().find(aux) != string ::npos )
             {
+                switch (func[i]->getTipo())
+                {
+                case 1:
+                    cout << "Operador - ";
+                    break;
+                case 2:
+                    cout << "Gerente - ";
+                    break;
+                case 3:
+                    cout << "Diretor - ";
+                    break;
+                case 4:
+                    cout << "Presidente - ";
+                    break;
+                default:
+                    break;
+                }
                 cont ++;
                 cout << "Código: "<<func[i]->getCodigo() << endl;
                 cout << "Nome: "<<func[i]->getNome() << endl;
@@ -167,6 +254,23 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         {
             if(func[i]->getData().find(aux) != string ::npos )
             {
+                switch (func[i]->getTipo())
+                {
+                case 1:
+                    cout << "Operador - ";
+                    break;
+                case 2:
+                    cout << "Gerente - ";
+                    break;
+                case 3:
+                    cout << "Diretor - ";
+                    break;
+                case 4:
+                    cout << "Presidente - ";
+                    break;
+                default:
+                    break;
+                }
                 cont ++;
                 cout << "Código: "<<func[i]->getCodigo() << endl;
                 cout << "Nome: "<<func[i]->getNome() << endl;
@@ -190,6 +294,23 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         {
             if(func[i]->getEnd().find(aux) != string ::npos )
             {
+                switch (func[i]->getTipo())
+                {
+                case 1:
+                    cout << "Operador - ";
+                    break;
+                case 2:
+                    cout << "Gerente - ";
+                    break;
+                case 3:
+                    cout << "Diretor - ";
+                    break;
+                case 4:
+                    cout << "Presidente - ";
+                    break;
+                default:
+                    break;
+                }
                 cont ++;
                 cout << "Código: "<<func[i]->getCodigo() << endl;
                 cout << "Nome: "<<func[i]->getNome() << endl;
