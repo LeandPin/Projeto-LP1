@@ -135,6 +135,24 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     {
         if(func[i]->getNome().find(aux) != string ::npos )
         {
+            switch (func[i]->getTipo())
+        {
+        case 1:
+            cout << "Operador - ";
+            break;
+        case 2:
+            cout << "Gerente - ";
+            break;
+        case 3:
+            cout << "Diretor - ";
+            break;
+        case 4:
+            cout << "Presidente - ";
+            break;
+        default:
+            break;
+        }
+        
             cont ++;
             cout << "Código: "<<func[i]->getCodigo() << endl;
             cout << "Nome: "<<func[i]->getNome() << endl;
@@ -162,6 +180,24 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     {
         if(func[i]->getData().find(aux) != string ::npos )
         {
+            switch (func[i]->getTipo())
+        {
+        case 1:
+            cout << "Operador - ";
+            break;
+        case 2:
+            cout << "Gerente - ";
+            break;
+        case 3:
+            cout << "Diretor - ";
+            break;
+        case 4:
+            cout << "Presidente - ";
+            break;
+        default:
+            break;
+        }
+
             cont ++;
             cout << "Código: "<<func[i]->getCodigo() << endl;
             cout << "Nome: "<<func[i]->getNome() << endl;
@@ -187,8 +223,26 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
 
         for (int i = 0; i < func.size(); i++) 
     {
+       
         if(func[i]->getEnd().find(aux) != string ::npos )
         {
+            switch (func[i]->getTipo())
+        {
+        case 1:
+            cout << "Operador - ";
+            break;
+        case 2:
+            cout << "Gerente - ";
+            break;
+        case 3:
+            cout << "Diretor - ";
+            break;
+        case 4:
+            cout << "Presidente - ";
+            break;
+        default:
+            break;
+        }
             cont ++;
             cout << "Código: "<<func[i]->getCodigo() << endl;
             cout << "Nome: "<<func[i]->getNome() << endl;
