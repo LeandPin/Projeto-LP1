@@ -54,7 +54,7 @@ void GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
         if(cod == func[i]->getCodigo())
         {
             system("clear||cls");
-            cout << "O que você seja editar :"<< endl;
+            cout << "O que você deseja editar :"<< endl;
             cout<<" 1. Nome"<< endl;
             cout<<" 2. Telefone"<< endl;
             cin >> item;
@@ -181,7 +181,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
 
      system("clear||cls");
         cin.ignore();
-        cout << "Digite o Endereço do Funcionário: " << endl;
+        cout << "Digite o Endereço do Funcionário a ser buscado: " << endl;
        
         getline(cin, aux);
 
