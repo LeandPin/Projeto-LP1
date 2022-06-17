@@ -146,11 +146,11 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     }
     if(cont == 0)
     {
-        cout << "Funcionario não encontrado" << endl;
+        cout << "Nenhum Funcionario Encontrado" << endl;
     }
 
         break;
-
+        
     case 2:
         system("clear||cls");
         cin.ignore();
@@ -173,11 +173,10 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     }
     if(cont == 0)
     {
-        cout << "Funcionario não encontrado" << endl;
+      cout << "Nenhum Funcionario Encontrado" << endl;
     }
 
         break;
-        
     case 3:
 
      system("clear||cls");
@@ -201,7 +200,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     }
     if(cont == 0)
     {
-        cout << "Funcionario não encontrado" << endl;
+      cout << "Nenhum Funcionario Encontrado" << endl;
     }
 
         break;
