@@ -131,19 +131,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         cin.ignore();
         cout << "Digite o nome que vai ser buscado: " << endl;
         getline(cin, aux);
-        break;
-    case 2:
-        system("clear||cls");
-        cin.ignore();
-        cout << "Digite a data de ingressão que vai ser buscada: " << endl;
-        cout << "Pode ser dia, mês , ano ou até mesmo a data completa" << endl;
-        getline(cin, aux);
-        break;
-    default:
-        break;
-    }
-
-    for (int i = 0; i < func.size(); i++) 
+        for (int i = 0; i < func.size(); i++) 
     {
         if(func[i]->getNome().find(aux) != string ::npos )
         {
@@ -161,6 +149,68 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
         cout << "Funcionario não encontrado" << endl;
     }
 
+        break;
+
+    case 2:
+        system("clear||cls");
+        cin.ignore();
+        cout << "Digite a data de ingressão que vai ser buscada: " << endl;
+        cout << "Pode ser dia, mês , ano ou até mesmo a data completa" << endl;
+        getline(cin, aux);
+
+        for (int i = 0; i < func.size(); i++) 
+    {
+        if(func[i]->getData().find(aux) != string ::npos )
+        {
+            cont ++;
+            cout << "Código: "<<func[i]->getCodigo() << endl;
+            cout << "Nome: "<<func[i]->getNome() << endl;
+            cout << "Telefone: "<<func[i]->getTelefone() << endl;
+            cout << "Data de admissão: "<<func[i]->getData() << endl;
+            cout << "Endereço: "<<func[i]->getEnd() << endl;
+            cout << "Salário: "<<func[i]->getSalario() << endl;
+        }
+    }
+    if(cont == 0)
+    {
+        cout << "Funcionario não encontrado" << endl;
+    }
+
+        break;
+        
+    case 3:
+
+     system("clear||cls");
+        cin.ignore();
+        cout << "Digite o Endereço do Funcionário: " << endl;
+       
+        getline(cin, aux);
+
+        for (int i = 0; i < func.size(); i++) 
+    {
+        if(func[i]->getEnd().find(aux) != string ::npos )
+        {
+            cont ++;
+            cout << "Código: "<<func[i]->getCodigo() << endl;
+            cout << "Nome: "<<func[i]->getNome() << endl;
+            cout << "Telefone: "<<func[i]->getTelefone() << endl;
+            cout << "Data de admissão: "<<func[i]->getData() << endl;
+            cout << "Endereço: "<<func[i]->getEnd() << endl;
+            cout << "Salário: "<<func[i]->getSalario() << endl;
+        }
+    }
+    if(cont == 0)
+    {
+        cout << "Funcionario não encontrado" << endl;
+    }
+
+        break;
+    
+    default:
+        break;
+    }
+
+    
 }
 
 void GerenciaFuncionario::CalcularFolhaSalarial()
