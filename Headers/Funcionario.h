@@ -17,18 +17,22 @@ public:
     void setTelefone(string telefone);
     void setData(string data);
     void setSalario(double salario);
-    int getTipo();
+    void setEnd(string end);
+    string getEnd();
     string getCodigo();
     string getNome();
     string getTelefone();
     string getData();
     double getSalario();
-   
+
+
+    void setTipo(int tipo);
+    int getTipo();
 
 protected:
     int tipo;
     string Codigo, Nome, Telefone;
-    string data;
+    string data, endereco;
     double Salario;
 
 private:

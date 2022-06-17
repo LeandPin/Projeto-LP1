@@ -14,11 +14,29 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
 {
     for (int i = 0; i < func.size(); i++) {
         if(cod == func[i]->getCodigo())
-        {
+        {                
+            switch (func[i]->getTipo())
+            {
+            case 1:
+                cout << "Cargo : Operador" << endl;
+                break;
+            case 2:
+                cout << "Cargo : Gerente" << endl;
+                break;
+            case 3:
+                cout << "Cargo : Diretor"<< endl;
+                break;
+            case 4:
+                cout << "Cargo : Presidente"<< endl;
+                break;
+            default:
+                break;
+            }
             cout << "Código: "<<func[i]->getCodigo() << endl;
             cout << "Nome: "<<func[i]->getNome() << endl;
             cout << "Telefone: "<<func[i]->getTelefone() << endl;
             cout << "Data de admissão: "<<func[i]->getData() << endl;
+            cout << "Endereço: "<<func[i]->getEnd() << endl;
             cout << "Salário: "<<func[i]->getSalario() << endl;
             cod = "open ../Fotos/"+cod+".png";
             system(cod.c_str());
@@ -80,6 +98,24 @@ void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
 {
     for (int i = 0; i < func.size(); i++) 
     {
+        
+        switch (func[i]->getTipo())
+        {
+        case 1:
+            cout << "Operador - ";
+            break;
+        case 2:
+            cout << "Gerente - ";
+            break;
+        case 3:
+            cout << "Diretor - ";
+            break;
+        case 4:
+            cout << "Presidente - ";
+            break;
+        default:
+            break;
+        }
         cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << endl;
     }
 }
@@ -116,6 +152,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
             cout << "Nome: "<<func[i]->getNome() << endl;
             cout << "Telefone: "<<func[i]->getTelefone() << endl;
             cout << "Data de admissão: "<<func[i]->getData() << endl;
+            cout << "Endereço: "<<func[i]->getEnd() << endl;
             cout << "Salário: "<<func[i]->getSalario() << endl;
         }
     }

@@ -29,6 +29,18 @@ void Funcionario::setSalario(double salario)
 
     Salario = salario;
 }
+void Funcionario::setEnd(string end)
+{
+    endereco = end;
+}
+void Funcionario::setTipo(int tipo)
+{
+    this->tipo = tipo;
+}
+string Funcionario::getEnd()
+{
+    return endereco;
+}
 string Funcionario::getCodigo()
 {
     return Codigo;

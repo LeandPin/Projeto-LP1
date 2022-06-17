@@ -12,6 +12,7 @@
 using namespace cv;
 using namespace std;
 
+//Não conseguir detectar rosto
 void CapturarRosto(String cod)
 {
     double scale = 1.0;
@@ -24,47 +25,38 @@ void CapturarRosto(String cod)
     face.load("../OpenCV_files/haarcascade_frontalface_alt.xml");
 
 
-    if (!cap.isOpened()) //verifico se ela não está aberta
+    if (!cap.isOpened()) 
     {
         cout<<"ERRO: A camera não foi aberta"<<endl;
-        //return -1; //caso ela não esteja disponível eu encerro meu programa  
     }
     else
     {
         while (true)
         {
-            Mat frame; // crio uma matriz chamada frame
-            cap >> frame; //Jogo os frames do video dentro da minha matriz frame
-
-            imshow("Webcam", frame);//Exibo minha matriz 
-
-            if(pollKey() >= 0) //Encerro a aplicação caso o usuário aperte alguma tecla
+            Mat frame; 
+            cap >> frame; 
+            imshow("Webcam", frame);
+            if(pollKey() >= 0) 
             {
                 int k = waitKey(0);
                 if(k == 's' || k == 'S') //se apertar s ele salva exatamente no frame que está sendo mostrado no display
                 {
+
                     img = frame;
                     break;    
                 }
-                else if (k == 27) // se apertar esc ele encerra o programa
-                {
-                    continue;
-                    //return 0;
-                } 
             }
         }
-        
+        destroyAllWindows();
     }
     
     resize(img, img, Size(img.size().width/scale,img.size().height/scale));
-    
     face.detectMultiScale(img, facesRect, 1.1, 4, CASCADE_SCALE_IMAGE, Size(20, 20));
-
+    
     for (size_t i = 0; i < facesRect.size(); i++)
     { 
         facesCortadas.push_back(img(facesRect[i]));
     }
-
     for (int i = 0; i < facesCortadas.size(); i++)
     {
         resize(facesCortadas[i], facesCortadas[i], Size(300,300));
@@ -87,6 +79,7 @@ void SalvarArquivo(vector<Funcionario *> func) {
         fs << func[i]->getNome() << endl;
         fs << func[i]->getTelefone() << endl;
         fs << func[i]->getData() << endl;
+        fs << func[i]->getEnd() << endl;
         fs << func[i]->getSalario() << endl;
         /*if (func[i]->getTipo() == 2)
             fs << ((Consultor*)func[i])->getPercentual() << endl;*/
@@ -99,7 +92,7 @@ vector<Funcionario *> LerArquivo() {
     Funcionario *f;
     fstream fs;
     int quant, tipo;
-    string codigo, nome, telefone;
+    string codigo, nome, telefone, end;
     string data;
     double salario;
     fs.open("dados.txt", fstream::in);
@@ -121,19 +114,30 @@ vector<Funcionario *> LerArquivo() {
         getline(fs, nome);
         getline(fs, telefone);
         getline(fs, data);
+        getline(fs, end);
         fs >> salario;
 
-        if (tipo == 1)
-            f = new Funcionario();
-        
-        /*else if (tipo == 2) {
-            fs >> per;
-            f = new Consultor(per);
-        }*/
+        switch (tipo) {
+            case 1:
+                f = new Funcionario();
+                break;
+            case 2:
+                f = new Gerente();
+                break;
+            case 3:
+                f = new Diretor();
+                break;
+            case 4:
+                f = new Presidente();
+                break;
+        }
+
+        f->setTipo(tipo);
         f ->setCodigo(codigo);
         f ->setNome(nome);
         f ->setTelefone(telefone);
         f ->setData(data);
+        f ->setEnd(end);
         f ->setSalario(salario);
         func.push_back(f);
     }
@@ -145,13 +149,15 @@ void CadastrarFunc(vector<Funcionario *>* func)
 {
     system("clear||cls");
     cout << "Quantos Funcionários você deseja cadastrar" << endl;
+    
     int quant, tipo;
-    string codigo, nome, telefone;
+    string codigo, nome, telefone, end;
     string data;
     double salario;
     Funcionario * f;
     cin >> quant;
     system("clear||cls");
+    
     for (int i = 0; i < quant; i++) 
     {
         cout << "Qual tipo de Funcionários você deseja cadastrar" << endl;
@@ -161,6 +167,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
         cout<<" 4. Presidente"<< endl;
         cin >> tipo;
         system("clear||cls");
+        
         switch (tipo) {
             case 1:
                 f = new Funcionario();
@@ -177,26 +184,41 @@ void CadastrarFunc(vector<Funcionario *>* func)
         }
 
         cin.ignore();
+
         cout << "Digite o código do Funcionário: " << endl;
         getline(cin, codigo);
+
         cout << "Digite o Nome do Funcionário: " << endl;
         getline(cin, nome);
+
         cout << "Digite o telefone para contato do Funcionário: " << endl;
         getline(cin, telefone);
+
         cout << "Digite a data de admissão do Funcionário: " << endl;
         getline(cin, data);
+
+        cout << "Digite o endereço do Funcionário seguindo a seguinte formatação: " << endl;
+        cout << "R. dos pescadores, 301 - Ponta dos Seixas - João Pessoa/PB " << endl;
+        cout << "Caso seja em avenida basta mudar o \"R.\" por \"Av.\" e se for apartamento basta colocar a abreviação \"Apto.\" seguida do número, exemplo: " << endl;
+        cout << "Av. dos pescadores, 301 - Apto.401 - Ponta dos Seixas - João Pessoa/PB " << endl;
+        getline(cin, end);
+
         cout << "Digite o salário do Funcionário: " << endl;
         cin >> salario;
+
         system("clear||cls");
         cout << "Será realizado a captura da face do Funcioário cadastrado, intruções para a captura ser bem sucedida :"<< endl;
         cout << "1. Imagem nitida olhando para camêra com um boa iluminação" << endl;
         cout << "2. Digite qualquer tecla para estar capturando a foto"<<endl;
         cout << "3. Caso a foto ficou agradavél para você basta apertar a tecla \" S\" para estar salvando, caso a foto não tenha ficado agradável basta apertar qualquer tecla diferente de \"S\" para estar realizando uma nova captura" << endl;
+        
         CapturarRosto(codigo);
+        
         f ->setCodigo(codigo);
         f ->setNome(nome);
         f ->setTelefone(telefone);
         f ->setData(data);
+        f->setEnd(end);
         f ->setSalario(salario);
         func->push_back(f);
         system("clear||cls");
@@ -215,6 +237,7 @@ int Menu()
     cout<<" 5. Calcular folha salarial"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
     cout<<" 7. Buscar Funcionário"<< endl;
+    cout<<" 8. Sair"<< endl;
     cin >> escolha;
     system("clear||cls");
     return escolha;
@@ -233,17 +256,19 @@ int main()
         int escolha = Menu();
         switch (escolha)
         {
-        case 1: //Cadastrar Funcionário
+        case 1: //Cadastrar Funcionário //FALT CHECAR DISPONIBILIDADE DO COD
             CadastrarFunc(&funcionarios);
             SalvarArquivo(funcionarios);
             break;
-        case 2: //Exibir Funcionário
+        
+        case 2: //Exibir Funcionário 
             cin.ignore();
             cout << "Digite o Codigo do Funcionário: " << endl;
             getline(cin,cod);
             gerenciador->ExibirRegistro(cod, funcionarios);
             cin.ignore();
             break;
+        
         case 3: //Excluir Funcionário //FALTA APAGAR FOTO
             cin.ignore();
             cout << "Digite o Codigo do Funcionário que deseja excluir: " << endl;
@@ -251,21 +276,25 @@ int main()
             funcionarios = gerenciador->ExcluirRegistro(cod, funcionarios);
             SalvarArquivo(funcionarios);
             break;
-        case 4: //Exibir Lista de Funcionário //FAlTA TIPOS
+        
+        case 4: //Exibir Lista de Funcionário
             cin.ignore();
             gerenciador->ExibirListaGeral(funcionarios);
             cin.ignore();
             break;
+        
         case 5://Calcular folha salaria
             //Calcular folha salarial
             break;
-        case 6://Editar Funcionário //FALTA FOTO E TIPO
+        
+        case 6://Editar Funcionário //FALTA FOTO E TIPO E SALARIO e end
             cin.ignore();
             cout << "Digite o Codigo do Funcionário que deseja editar: " << endl;
             getline(cin,cod);
             gerenciador->EditarDados(cod, funcionarios);
             SalvarArquivo(funcionarios);
             break;
+        
         case 7://Buscar Funcionário
             cin.ignore();
             cout << "Escolha a operação que você deseja realizar:"<< endl;
@@ -276,11 +305,11 @@ int main()
             gerenciador->Busca(opc, funcionarios);
             cin.ignore();
             break;
+        
         default:
             break;
         }
     }
-    
     
     return 0;
 }
