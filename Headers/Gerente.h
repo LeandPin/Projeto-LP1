@@ -13,7 +13,7 @@ public:
     string getAreaSupervisao();
 
 private:
-string AreaSupervisao;
+
 
 };
 

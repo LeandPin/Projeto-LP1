@@ -15,8 +15,6 @@ public:
     string getFormacaoAcademica();
 
 private:
-string AreaFormacao;
-string FormacaoAcademica;
 
 };
 
