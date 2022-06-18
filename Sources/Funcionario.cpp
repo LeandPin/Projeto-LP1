@@ -69,3 +69,7 @@ void Funcionario::aumentarSalario()
 {
     Salario+=Salario*percent;
 }
+void Funcionario::setPercent(double percent)
+{
+    this->percent = percent;
+}

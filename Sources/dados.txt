@@ -4,25 +4,25 @@ Leanderson Pinheiro
 (83)987654321
 26/09/2002
 R. Professora Josefa Di Lorenzo Sousa, 110 - Apto.301 - Portal do sol - João Pessoa/PB
-130
-1
+219.7
+2
 1313
-Pedro Operador
-1
-1
-1
-105
+Pedro Gerente Edit
+Tel edit
+03/09/2001
+End edit
+115.5
 2
 1212
 Fulano Gerente
 1
 1
 1
-110
+133.1
 3
 1111
 Siclano Diretor
 1
 1
 1
-120
+172.8

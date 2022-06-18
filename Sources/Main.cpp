@@ -200,6 +200,7 @@ void CadastrarFunc(vector<Funcionario *>* func)
         getline(cin, codigo);
 
         cout << "Digite o Nome do Funcionário: " << endl;
+        cout << "Exemplo: 01/10/2001"<<endl;
         getline(cin, nome);
 
         cout << "Digite o telefone para contato do Funcionário: " << endl;

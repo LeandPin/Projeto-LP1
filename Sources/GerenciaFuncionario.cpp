@@ -53,20 +53,25 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
 
 int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
 {
-    string aux;
+    string aux, acesso;
+    int tipo, cont = 0;
     double sal;
     int item;
     for (int i = 0; i < func.size(); i++) 
     {
         if(cod == func[i]->getCodigo())
         {
-            
+            cont++;
             cout << "O que você seja editar :"<< endl;
             cout<<" 1. Endereço"<< endl;
             cout<<" 2. Telefone"<< endl;
             cout<<" 3. Salário"<< endl;
             cout<<" 4. Foto"<< endl;
-            cout<<" 5. Cancelar"<< endl;
+            cout<<" 5. Cargo"<< endl;
+            cout<<" 6. Nome"<< endl;
+            cout<<" 7. Data de ingresso"<< endl;
+            cout<<" 8. Código"<< endl;
+            cout<<" 9. Cancelar"<< endl;
             cin >> item;
             system("clear||cls");
             
@@ -99,12 +104,65 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
                 return 4;
                 break;
             case 5:
+                cin.ignore();
+                cout << "Selecione o novo cargo do Funcionário: " << endl;
+                cout<<" 1. Operador" << endl;
+                cout<<" 2. Gerente"<< endl;
+                cout<<" 3. Diretor"<< endl;
+                cout<<" 4. Presidente"<< endl;
+                cin >> tipo;
+                switch (tipo)
+                {
+                case 1:
+                    func[i]->setPercent(0.05);
+                    break;
+                case 2:
+                    func[i]->setPercent(0.1);
+                    break;
+                case 3:
+                    func[i]->setPercent(0.2);
+                    break;
+                case 4:
+                    func[i]->setPercent(0.3);
+                    break;
+                default:
+                    cout<<"Digito errado"<<endl;
+                    break;
+                }
+                func[i]->setTipo(tipo);
+                break;
+            case 6:
+                cin.ignore();
+                cout << "Digite o novo nome:" << endl;
+                getline(cin, aux);
+                func[i]->setNome(aux);
+                break;
+            case 7:
+                cin.ignore();
+                cout << "Digite a nova data de ingressão:" << endl;
+                cout << "Exemplo: 01/10/2001"<<endl;
+                getline(cin, aux);
+                func[i]->setData(aux);
+                break;
+            case 8:
+                cin.ignore();
+                cout << "Digite o novo código:" << endl;
+                getline(cin, aux);
+                acesso = "mv ../Fotos/"+func[i]->getCodigo()+".png ../Fotos/"+aux+".png";
+                system(acesso.c_str());
+                func[i]->setCodigo(aux);
+                break;
+            case 9:
                 return 1;
                 break;
             default:
                 break;
             }
         }
+    }
+    if (cont == 0)
+    {
+        cin.ignore();
     }
     return 1;
 }
@@ -349,6 +407,7 @@ void GerenciaFuncionario::AumentarSalarios(vector <Funcionario *> func)
         func[i]->aumentarSalario();
     }
 }
+
 void GerenciaFuncionario::ImprimirFolhaSalarial()
 {
     

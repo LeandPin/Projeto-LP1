@@ -26,6 +26,7 @@ public:
     double getSalario();
     void setTipo(int tipo);
     int getTipo();
+    void setPercent(double percent);
 
     virtual void aumentarSalario();
 
