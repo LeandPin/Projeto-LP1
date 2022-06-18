@@ -31,6 +31,7 @@ public:
 
 protected:
     int tipo;
+    float percent;
     string Codigo, Nome, Telefone;
     string data, endereco;
     double Salario;

@@ -3,6 +3,7 @@
 Funcionario::Funcionario()
 {
     tipo = 1;
+    percent = 0.05;
 }
 Funcionario::~Funcionario()
 {
