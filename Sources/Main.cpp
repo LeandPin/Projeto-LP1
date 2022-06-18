@@ -171,7 +171,9 @@ void CadastrarFunc(vector<Funcionario *>* func)
         cout<<" 2. Gerente"<< endl;
         cout<<" 3. Diretor"<< endl;
         cout<<" 4. Presidente"<< endl;
+        cout<<" 5. Voltar"<< endl;
         cin >> tipo;
+
         system("clear||cls");
         
         switch (tipo) {
@@ -186,6 +188,9 @@ void CadastrarFunc(vector<Funcionario *>* func)
                 break;
             case 4:
                 f = new Presidente();
+                break;
+            case 5:
+                return;
                 break;
         }
 
@@ -297,7 +302,6 @@ int main()
         case 4: //Exibir Lista de Funcionário
             cin.ignore();
             gerenciador->ExibirListaGeral(funcionarios);
-            cin.ignore();
             break;
         
         case 5://Calcular folha salaria
@@ -315,10 +319,6 @@ int main()
             {
                 CapturarRosto(cod);
             }
-            else
-            {
-                gerenciador->EditarDados(cod, funcionarios);
-            }
             SalvarArquivo(funcionarios);
             break;
         
@@ -328,11 +328,16 @@ int main()
             cout<<" 1. Busca por nome" << endl;
             cout<<" 2. Busca por data de adimissão"<< endl;
             cout<<" 3. Busca por endereço"<< endl;
+            cout<<" 4. Cancelar"<<endl;
             cin >> opc;
             gerenciador->Busca(opc, funcionarios);
             cin.ignore();
             break;
         
+        case 8:
+            return 0;
+            break;
+
         default:
             break;
         }

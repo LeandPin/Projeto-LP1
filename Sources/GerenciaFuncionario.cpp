@@ -66,6 +66,7 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
             cout<<" 2. Telefone"<< endl;
             cout<<" 3. Salário"<< endl;
             cout<<" 4. Foto"<< endl;
+            cout<<" 5. Cancelar"<< endl;
             cin >> item;
             system("clear||cls");
             
@@ -89,7 +90,7 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
                 break;
             
             case 3:
-            cin.ignore();
+                cin.ignore();
                 cout << "Digite o novo salário do Funcionário: " << endl;
                 cin >> sal;
                 func[i]->setSalario(sal);
@@ -97,7 +98,9 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
             case 4:
                 return 4;
                 break;
-
+            case 5:
+                return 1;
+                break;
             default:
                 break;
             }
@@ -133,6 +136,7 @@ void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
     cout << "Escolha a operação que você deseja realizar:"<< endl;
             cout<<" 1. Exibir lista de um cargo especifico" << endl;
             cout<<" 2. Exibir lista geral"<< endl;
+            cout<<" 3. Cancelar"<< endl;
     cin >> aux;
     cin.ignore();
     switch (aux)
@@ -169,6 +173,7 @@ void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
                     cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << " - Salário: "<<func[i]->getSalario()<<endl;
                 }
             }
+            cin.ignore();
             break;
     case 2:
         for (int i = 0; i < func.size(); i++) 
@@ -193,6 +198,10 @@ void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
             }
             cout << "Código: "<<func[i]->getCodigo() << " - "<< "Nome: "<<func[i]->getNome() << " - Salário: "<<func[i]->getSalario()<<endl;
         }   
+        cin.ignore();
+        break;
+    case 3:
+        return;
         break;
     default:
         break;
@@ -321,7 +330,9 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
             }
         }
         break;
-    
+    case 4:
+        return;
+        break;
     default:
         break;
     }
