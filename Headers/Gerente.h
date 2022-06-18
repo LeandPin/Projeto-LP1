@@ -14,6 +14,7 @@ public:
 
 private:
 
+    string AreaSupervisao;
 
 };
 

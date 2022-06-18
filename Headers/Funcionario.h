@@ -24,15 +24,6 @@ public:
     string getTelefone();
     string getData();
     double getSalario();
-    virtual void setAreaFormacao(string formacao)=0;
-    virtual void setFormacaoAcademica(string graduacao)=0;
-    virtual getAreaFormacao()=0;
-    virtual string getFormacaoAcademica()=0;
-    virtual void setAreaSupervisao(string supervisao)=0;
-    virtual string getAreaSupervisao()=0;
-    
-
-
     void setTipo(int tipo);
     int getTipo();
 
@@ -42,10 +33,6 @@ protected:
     string Codigo, Nome, Telefone;
     string data, endereco;
     double Salario;
-    string AreaFormacao;
-    string FormacaoAcademica;
-    string AreaSupervisao;
-
 
 private:
 };

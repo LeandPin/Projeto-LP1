@@ -18,9 +18,8 @@ public:
 
 
 private:
-string AreaFormacao;
-string AreaSupervisao;
-
+    string AreaFormacao;
+    string AreaSupervisao;
 
 };
 
