@@ -14,7 +14,7 @@ public:
     string getAreaFormacao();
     string getAreaSupervisao();
 
-    void FolhaSalarial(){}
+    void aumentarSalario();
 
 private:
     string AreaFormacao;

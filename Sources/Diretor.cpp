@@ -9,15 +9,24 @@ Diretor::~Diretor()
 {
 
 }
-void Diretor::setAreaFormacao(string formacao){
+void Diretor::setAreaFormacao(string formacao)
+{
   AreaFormacao = formacao;
 }
-void Diretor::setAreaSupervisao(string supervisao){
- AreaSupervisao = supervisao;
+void Diretor::setAreaSupervisao(string supervisao)
+{
+  AreaSupervisao = supervisao;
 }
-string Diretor::getAreaFormacao(){
- return AreaFormacao;
+void Diretor::aumentarSalario()
+{
+  Salario+=Salario*percent;
 }
-string Diretor::getAreaSupervisao(){
- return AreaFormacao;
+
+string Diretor::getAreaFormacao()
+{
+  return AreaFormacao;
+}
+string Diretor::getAreaSupervisao()
+{
+  return AreaFormacao;
 }

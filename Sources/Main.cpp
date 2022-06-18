@@ -245,7 +245,7 @@ int Menu()
     cout<<" 2. Exibir Funcionário"<< endl;
     cout<<" 3. Excluir Funcionário"<< endl;
     cout<<" 4. Exibir Lista de Funcionários"<< endl;
-    cout<<" 5. Calcular folha salarial"<< endl;
+    cout<<" 5. Aumentar Salário"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
     cout<<" 7. Buscar Funcionário"<< endl;
     cout<<" 8. Sair"<< endl;
@@ -304,8 +304,12 @@ int main()
             gerenciador->ExibirListaGeral(funcionarios);
             break;
         
-        case 5://Calcular folha salaria
-            //Calcular folha salarial
+        case 5://Aumentar Salário
+            cin.ignore();
+            gerenciador->AumentarSalarios(funcionarios);
+            SalvarArquivo(funcionarios);
+            cout<<"Salários aumentados respeitando a porcentagem fixa de acordo com os cargos."<<endl;
+            cin.ignore();
             break;
         
         case 6://Editar Funcionário

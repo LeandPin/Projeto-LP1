@@ -342,9 +342,12 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     }
 }
 
-void GerenciaFuncionario::AumentarSalario(vector <Funcionario *> func)
+void GerenciaFuncionario::AumentarSalarios(vector <Funcionario *> func)
 {
-
+    for (int i = 0; i < func.size(); i++) 
+    {
+        func[i]->aumentarSalario();
+    }
 }
 void GerenciaFuncionario::ImprimirFolhaSalarial()
 {

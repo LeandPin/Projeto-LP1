@@ -65,3 +65,7 @@ double Funcionario::getSalario()
 int Funcionario::getTipo() {
     return tipo;
 }
+void Funcionario::aumentarSalario()
+{
+    Salario+=Salario*percent;
+}

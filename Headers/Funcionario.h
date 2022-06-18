@@ -27,14 +27,13 @@ public:
     void setTipo(int tipo);
     int getTipo();
 
-    virtual void FolhaSalarial(){}
+    virtual void aumentarSalario();
 
 protected:
     int tipo;
-    float percent;
     string Codigo, Nome, Telefone;
     string data, endereco;
-    double Salario;
+    double Salario, percent;
 
 private:
 };

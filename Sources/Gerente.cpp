@@ -11,11 +11,15 @@ Gerente::~Gerente()
 }
 void Gerente::setAreaSupervisao(string supervisao)
 {
-AreaSupervisao = supervisao;
+    AreaSupervisao = supervisao;
 }
 string Gerente::getAreaSupervisao()
 {
- return AreaSupervisao;
+    return AreaSupervisao;
+}
+void Gerente::aumentarSalario()
+{
+    Salario+=Salario*percent;
 }
 
  

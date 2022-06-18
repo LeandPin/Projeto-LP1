@@ -12,7 +12,7 @@ public:
     void setAreaSupervisao(string supervisao);
     string getAreaSupervisao();
 
-    void FolhaSalarial(){}
+    void aumentarSalario();
 
 private:
 
