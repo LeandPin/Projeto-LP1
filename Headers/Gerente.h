@@ -12,6 +12,8 @@ public:
     void setAreaSupervisao(string supervisao);
     string getAreaSupervisao();
 
+    void FolhaSalarial(){}
+
 private:
 
     string AreaSupervisao;

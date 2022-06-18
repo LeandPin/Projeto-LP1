@@ -14,6 +14,8 @@ public:
     string getAreaFormacao();
     string getFormacaoAcademica();
 
+    void FolhaSalarial(){}
+
 private:
     string AreaFormacao;
     string FormacaoAcademica;

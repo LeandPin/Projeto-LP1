@@ -17,8 +17,7 @@ public:
     void ExibirRegistro(string cod, vector <Funcionario *> func);
     void ExibirListaGeral(vector <Funcionario *> func);
     void Busca(int tipo, vector <Funcionario *> func);
-    
-    virtual void CalcularFolhaSalarial();
+    void AumentarSalario(vector <Funcionario *> func);
     void ImprimirFolhaSalarial();
 
     private:

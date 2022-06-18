@@ -27,6 +27,8 @@ public:
     void setTipo(int tipo);
     int getTipo();
 
+    virtual void FolhaSalarial(){}
+
 protected:
     int tipo;
     float percent;

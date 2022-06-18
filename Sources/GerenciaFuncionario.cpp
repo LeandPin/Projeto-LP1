@@ -342,7 +342,7 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
     }
 }
 
-void GerenciaFuncionario::CalcularFolhaSalarial()
+void GerenciaFuncionario::AumentarSalario(vector <Funcionario *> func)
 {
 
 }
