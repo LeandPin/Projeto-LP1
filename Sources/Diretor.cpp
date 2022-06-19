@@ -9,7 +9,6 @@ Diretor::~Diretor()
 {
 
 }
-
 void Diretor::aumentarSalario()
 {
   Salario+=Salario*percent;

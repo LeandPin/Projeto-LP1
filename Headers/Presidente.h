@@ -11,7 +11,6 @@ public:
     ~Presidente();
 
     void aumentarSalario();
-
 };
 
 #endif

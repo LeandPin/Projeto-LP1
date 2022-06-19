@@ -1,6 +1,5 @@
 #include "../Headers/GerenciaFuncionario.h"
 
-
 GerenciaFuncionario::GerenciaFuncionario()
 {
 
@@ -53,7 +52,6 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
         cout << "Nenhum funcionário encontrado" << endl;
     }
 }
-
 int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
 {
     string aux, acesso;
@@ -175,7 +173,6 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
     }
     return 1;
 }
-
 vector <Funcionario *> GerenciaFuncionario::ExcluirRegistro(string cod, vector <Funcionario *> func)
 {  
     for (int i = 0; i < func.size(); i++) {
@@ -196,7 +193,6 @@ vector <Funcionario *> GerenciaFuncionario::ExcluirRegistro(string cod, vector <
     }
     return func;
 }
-
 void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
 {
     int aux;
@@ -274,7 +270,6 @@ void GerenciaFuncionario::ExibirListaGeral(vector <Funcionario *> func)
         break;
     }
 }
-
 void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
 {
     int cont = 0;
@@ -408,7 +403,6 @@ void GerenciaFuncionario::Busca(int tipo, vector <Funcionario *> func)
       cout << "Nenhum Funcionario Encontrado" << endl;
     }
 }
-
 void GerenciaFuncionario::AumentarSalarios(vector <Funcionario *> func)
 {
     for (int i = 0; i < func.size(); i++) 
@@ -416,7 +410,6 @@ void GerenciaFuncionario::AumentarSalarios(vector <Funcionario *> func)
         func[i]->aumentarSalario();
     }
 }
-
 int GerenciaFuncionario::disponibilidadeCod(string cod, vector <Funcionario *> func)
 {
     int cont=0;
@@ -436,7 +429,6 @@ int GerenciaFuncionario::disponibilidadeCod(string cod, vector <Funcionario *> f
         return 0;
     }
 }
-
 void GerenciaFuncionario::ImprimirFolhaSalarial()
 {
     

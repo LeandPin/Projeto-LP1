@@ -10,8 +10,6 @@ public:
     Diretor();
     ~Diretor();
     void aumentarSalario();
-
-private:
 };
 
 #endif

@@ -21,9 +21,6 @@ public:
     void ImprimirFolhaSalarial();
     int disponibilidadeCod(string cod, vector <Funcionario *> func);
 
-    private:
-   
-
 };
 
 #endif

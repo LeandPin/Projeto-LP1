@@ -9,6 +9,7 @@ Funcionario::~Funcionario()
 {
 
 }
+
 void Funcionario::setCodigo(string codigo)
 {
     Codigo = codigo;
@@ -38,6 +39,35 @@ void Funcionario::setTipo(int tipo)
 {
     this->tipo = tipo;
 }
+void Funcionario::setPercent(double percent)
+{
+    this->percent = percent;
+}
+void Funcionario::setAreaFormacao(string formacao)
+{
+    AreaFormacao = formacao;
+}
+void Funcionario::setFormacaoAcademica(string graduacao)
+{
+    FormacaoAcademica = graduacao;
+}
+void Funcionario::setAreaSupervisao(string supervisao)
+{   
+    AreaSup = supervisao;
+}
+
+string Funcionario::getAreaFormacao()
+{
+    return AreaFormacao;
+}
+string Funcionario::getFormacaoAcademica()
+{
+    return FormacaoAcademica;
+}
+string Funcionario::getAreaSupervisao()
+{
+    return AreaSup;
+}
 string Funcionario::getEnd()
 {
     return endereco;
@@ -65,35 +95,8 @@ double Funcionario::getSalario()
 int Funcionario::getTipo() {
     return tipo;
 }
+
 void Funcionario::aumentarSalario()
 {
     Salario+=Salario*percent;
-}
-void Funcionario::setPercent(double percent)
-{
-    this->percent = percent;
-}
-void Funcionario::setAreaFormacao(string formacao)
-{
-    AreaFormacao = formacao;
-}
-void Funcionario::setFormacaoAcademica(string graduacao)
-{
-    FormacaoAcademica = graduacao;
-}
-string Funcionario::getAreaFormacao()
-{
-    return AreaFormacao;
-}
-string Funcionario::getFormacaoAcademica()
-{
-    return FormacaoAcademica;
-}
-void Funcionario::setAreaSupervisao(string supervisao)
-{   
-    AreaSup = supervisao;
-}
-string Funcionario::getAreaSupervisao()
-{
-    return AreaSup;
 }

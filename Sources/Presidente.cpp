@@ -9,7 +9,6 @@ Presidente::~Presidente()
 {
 
 }
-
 void Presidente::aumentarSalario()
 {
     Salario+=Salario*percent;

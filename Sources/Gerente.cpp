@@ -9,7 +9,6 @@ Gerente::~Gerente()
 {
 
 }
-
 void Gerente::aumentarSalario()
 {
     Salario+=Salario*percent;
