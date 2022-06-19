@@ -148,6 +148,12 @@ int GerenciaFuncionario::EditarDados(string cod, vector <Funcionario *> func)
                 cin.ignore();
                 cout << "Digite o novo código:" << endl;
                 getline(cin, aux);
+                while (!disponibilidadeCod(aux,func))
+                {   
+                    cout << "---Código em uso---"<<endl;
+                    cout << "Digite o código do Funcionário: " << endl;
+                    getline(cin, aux);
+                }
                 acesso = "mv ../Fotos/"+func[i]->getCodigo()+".png ../Fotos/"+aux+".png";
                 system(acesso.c_str());
                 func[i]->setCodigo(aux);
@@ -405,6 +411,26 @@ void GerenciaFuncionario::AumentarSalarios(vector <Funcionario *> func)
     for (int i = 0; i < func.size(); i++) 
     {
         func[i]->aumentarSalario();
+    }
+}
+
+int GerenciaFuncionario::disponibilidadeCod(string cod, vector <Funcionario *> func)
+{
+    int cont=0;
+    for (int i = 0; i < func.size(); i++) 
+    {
+        if(cod == func[i]->getCodigo())
+        { 
+            cont++;
+        }
+    }
+    if (cont == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
     }
 }
 

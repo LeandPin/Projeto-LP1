@@ -151,7 +151,7 @@ vector<Funcionario *> LerArquivo() {
     return func;
 }
 
-void CadastrarFunc(vector<Funcionario *>* func)
+void CadastrarFunc(vector<Funcionario *>* func,GerenciaFuncionario *gerenciador)
 {
     system("clear||cls");
     cout << "Quantos Funcionários você deseja cadastrar" << endl;
@@ -198,15 +198,21 @@ void CadastrarFunc(vector<Funcionario *>* func)
 
         cout << "Digite o código do Funcionário: " << endl;
         getline(cin, codigo);
+        while (!gerenciador->disponibilidadeCod(codigo,*func))
+        {   
+            cout << "---Código em uso---"<<endl;
+            cout << "Digite o código do Funcionário: " << endl;
+            getline(cin, codigo);
+        }
 
         cout << "Digite o Nome do Funcionário: " << endl;
-        cout << "Exemplo: 01/10/2001"<<endl;
         getline(cin, nome);
 
         cout << "Digite o telefone para contato do Funcionário: " << endl;
         getline(cin, telefone);
 
         cout << "Digite a data de admissão do Funcionário: " << endl;
+        cout << "Exemplo: 01/10/2001"<<endl;
         getline(cin, data);
 
         cout << "Digite o endereço do Funcionário seguindo a seguinte formatação: " << endl;
@@ -269,7 +275,7 @@ int main()
         switch (escolha)
         {
         case 1: //Cadastrar Funcionário //FALT CHECAR DISPONIBILIDADE DO COD
-            CadastrarFunc(&funcionarios);
+            CadastrarFunc(&funcionarios,gerenciador);
             SalvarArquivo(funcionarios);
             break;
         

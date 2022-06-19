@@ -19,6 +19,7 @@ public:
     void Busca(int tipo, vector <Funcionario *> func);
     void AumentarSalarios(vector <Funcionario *> func);
     void ImprimirFolhaSalarial();
+    int disponibilidadeCod(string cod, vector <Funcionario *> func);
 
     private:
    
