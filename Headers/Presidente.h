@@ -9,16 +9,9 @@ class Presidente : public Funcionario
 public:
     Presidente();
     ~Presidente();
-    void setAreaFormacao(string formacao);
-    void setFormacaoAcademica(string graduacao);
-    string getAreaFormacao();
-    string getFormacaoAcademica();
 
     void aumentarSalario();
 
-private:
-    string AreaFormacao;
-    string FormacaoAcademica;
 };
 
 #endif

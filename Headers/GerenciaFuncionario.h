@@ -6,7 +6,7 @@
 
 #pragma once
 
-class GerenciaFuncionario : public Funcionario 
+class GerenciaFuncionario
 {
 public:
     GerenciaFuncionario();

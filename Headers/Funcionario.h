@@ -27,12 +27,19 @@ public:
     void setTipo(int tipo);
     int getTipo();
     void setPercent(double percent);
+   
+    void setAreaSupervisao(string supervisao);
+    string getAreaSupervisao();
+    void setAreaFormacao(string formacao);
+    string getAreaFormacao();
+    void setFormacaoAcademica(string graduacao);
+    string getFormacaoAcademica();
 
     virtual void aumentarSalario();
 
 protected:
     int tipo;
-    string Codigo, Nome, Telefone;
+    string Codigo, Nome, Telefone,AreaFormacao,FormacaoAcademica,AreaSup;
     string data, endereco;
     double Salario, percent;
 

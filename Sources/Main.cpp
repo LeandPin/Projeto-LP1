@@ -77,6 +77,9 @@ void SalvarArquivo(vector<Funcionario *> func) {
     for (int i = 0; i < func.size(); i++) 
     {
         fs << func[i]->getTipo() << endl;
+        fs << func[i]->getAreaSupervisao() << endl;
+        fs << func[i]->getAreaFormacao() << endl;
+        fs << func[i]->getFormacaoAcademica() << endl;
         fs << func[i]->getCodigo() << endl;
         fs << func[i]->getNome() << endl;
         fs << func[i]->getTelefone() << endl;
@@ -92,7 +95,7 @@ vector<Funcionario *> LerArquivo() {
     Funcionario *f;
     fstream fs;
     int quant, tipo;
-    string codigo, nome, telefone, end;
+    string codigo, nome, telefone, end, aSup, aFor, fAcad;
     string data;
     double salario;
     fs.open("dados.txt", fstream::in);
@@ -111,6 +114,9 @@ vector<Funcionario *> LerArquivo() {
         }
         
         fs.ignore();
+        getline(fs, aSup);
+        getline(fs, aFor);
+        getline(fs, fAcad);
         getline(fs, codigo);
         getline(fs, nome);
         getline(fs, telefone);
@@ -138,7 +144,11 @@ vector<Funcionario *> LerArquivo() {
         }
 
         f->setTipo(tipo);
+
         f ->setCodigo(codigo);
+        f->setAreaSupervisao(aSup);
+        f->setAreaFormacao(aFor);
+        f->setFormacaoAcademica(fAcad);
         f ->setNome(nome);
         f ->setTelefone(telefone);
         f ->setData(data);
@@ -166,6 +176,7 @@ void CadastrarFunc(vector<Funcionario *>* func,GerenciaFuncionario *gerenciador)
     
     for (int i = 0; i < quant; i++) 
     {
+        string aSupervisao = "-", aFormacao= "-", fAcademica= "-";
         cout << "Qual tipo de Funcionários você deseja cadastrar" << endl;
         cout<<" 1. Operador" << endl;
         cout<<" 2. Gerente"<< endl;
@@ -175,27 +186,34 @@ void CadastrarFunc(vector<Funcionario *>* func,GerenciaFuncionario *gerenciador)
         cin >> tipo;
 
         system("clear||cls");
-        
+        cin.ignore();
         switch (tipo) {
             case 1:
                 f = new Funcionario();
                 break;
             case 2:
                 f = new Gerente();
+                cout << "Digite a área de supervisão: " << endl;
+                getline(cin, aSupervisao);
                 break;
             case 3:
                 f = new Diretor();
+                cout << "Digite a área de supervisão: " << endl;
+                getline(cin, aSupervisao);
+                cout << "Digite a área de formação: " << endl;
+                getline(cin, aFormacao);
                 break;
             case 4:
                 f = new Presidente();
+                cout << "Digite a área de formação: " << endl;
+                getline(cin, aFormacao);
+                cout << "Digite a área de formação academica: " << endl;
+                getline(cin, fAcademica);
                 break;
             case 5:
                 return;
                 break;
         }
-
-        cin.ignore();
-
         cout << "Digite o código do Funcionário: " << endl;
         getline(cin, codigo);
         while (!gerenciador->disponibilidadeCod(codigo,*func))
@@ -232,6 +250,9 @@ void CadastrarFunc(vector<Funcionario *>* func,GerenciaFuncionario *gerenciador)
         
         CapturarRosto(codigo);
         
+        f->setFormacaoAcademica(fAcademica);
+        f->setAreaSupervisao(aSupervisao);
+        f->setAreaFormacao(aFormacao);
         f ->setCodigo(codigo);
         f ->setNome(nome);
         f ->setTelefone(telefone);
@@ -353,8 +374,5 @@ int main()
             break;
         }
     }
-
-
-    
     return 0;
 }

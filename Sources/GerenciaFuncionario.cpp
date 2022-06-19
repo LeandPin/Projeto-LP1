@@ -41,6 +41,9 @@ void GerenciaFuncionario::ExibirRegistro(string cod, vector <Funcionario *> func
             cout << "Data de admissão: "<<func[i]->getData() << endl;
             cout << "Endereço: "<<func[i]->getEnd() << endl;
             cout << "Salário: "<<func[i]->getSalario() << endl;
+            cout << "Área de supervisão: "<<func[i]->getAreaSupervisao() << endl;
+            cout << "Área de formação: "<<func[i]->getAreaFormacao() << endl;
+            cout << "Formação Academica: "<<func[i]->getFormacaoAcademica() << endl;
             cod = "open ../Fotos/"+cod+".png";
             system(cod.c_str());
         }

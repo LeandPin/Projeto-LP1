@@ -9,15 +9,8 @@ class Gerente : public Funcionario
 public:
     Gerente();
     ~Gerente();
-    void setAreaSupervisao(string supervisao);
-    string getAreaSupervisao();
 
     void aumentarSalario();
-
-private:
-
-    string AreaSupervisao;
-
 };
 
 #endif

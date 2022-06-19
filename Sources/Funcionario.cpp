@@ -73,3 +73,27 @@ void Funcionario::setPercent(double percent)
 {
     this->percent = percent;
 }
+void Funcionario::setAreaFormacao(string formacao)
+{
+    AreaFormacao = formacao;
+}
+void Funcionario::setFormacaoAcademica(string graduacao)
+{
+    FormacaoAcademica = graduacao;
+}
+string Funcionario::getAreaFormacao()
+{
+    return AreaFormacao;
+}
+string Funcionario::getFormacaoAcademica()
+{
+    return FormacaoAcademica;
+}
+void Funcionario::setAreaSupervisao(string supervisao)
+{   
+    AreaSup = supervisao;
+}
+string Funcionario::getAreaSupervisao()
+{
+    return AreaSup;
+}

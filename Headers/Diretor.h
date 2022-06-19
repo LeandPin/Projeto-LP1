@@ -9,17 +9,9 @@ class Diretor : public Funcionario
 public:
     Diretor();
     ~Diretor();
-    void setAreaFormacao(string formacao);
-    void setAreaSupervisao(string supervisao);
-    string getAreaFormacao();
-    string getAreaSupervisao();
-
     void aumentarSalario();
 
 private:
-    string AreaFormacao;
-    string AreaSupervisao;
-
 };
 
 #endif
