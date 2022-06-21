@@ -494,74 +494,120 @@ vector<string>  GerenciaFuncionario::ImprimirFolhaSalario(vector <Funcionario *>
                 codi.push_back(codFolhaCalc);
                 codi.push_back(to_string(rDias));
                 codi.push_back(to_string(rHorasEx));
-                for (int j = 0; j < codi.size(); j++)
-                {   
-                    if(func[i]->getCodigo()+"m"+to_string(mesOUano) == codi[j])
-                    {
-                        cout <<"Empregado: "+func[i]->getNome()<<endl;
-                        cout.precision(2);
-                        cout <<"Salário base: R$" << fixed<<(func[i]->getSalario())<<endl;
-                        sal = (((func[i]->getSalario()/30)/8)*stoi(codi[j+2]))*2;
-                        cout<<"Acréssimo de R$" <<fixed<<sal<< +" devido a "+codi[j+2]+"h00min de horas extras."<<endl;
-                        sal = sal + func[i]->getSalario();
-                        cout<<"Descontos:"<<endl;
-                        cout<<"INSS: "<<endl;
-                        if(sal <= 1212)
-                        {   
-                            cout << "7,5% -> R$"<<fixed<<sal * 0.075<<endl;                            
-                            sal -= sal * 0.075;
-                        }
-                        else if(sal <= 2427.35)
-                        {                                                
-                            cout << "9% -> R$"<<fixed<<sal * 0.09<<endl;                            
-                            sal -= sal * 0.09;        
-                        }
-                        else if(sal <= 3641.03)
-                        {                                        
-                            cout << "12% -> R$"<<fixed<<sal * 0.12<<endl;
-                            sal -= sal * 0.12;
-                        }
-                        else
-                        {                                                
-                            cout << "14% -> R$"<<fixed<<sal * 0.14<<endl;                            
-                            sal -= sal * 0.14;        
-                        }
-                        cout<<"IRRF: "<<endl;
-                        if (sal < 1903.99)
+                
+                if(mesOUano <13)//mensal
+                {
+                    for (int j = 0; j < codi.size(); j++)
+                    {   
+                        if(func[i]->getCodigo()+"m"+to_string(mesOUano) == codi[j])
                         {
-                            cout << "0% -> R$"<<fixed<<sal<<endl;                            
+                            cout <<"Empregado: "+func[i]->getNome()<<endl;
+                            cout.precision(2);
+                            cout <<"Salário base: R$" << fixed<<(func[i]->getSalario())<<endl;
+                            sal = (((func[i]->getSalario()/30)/8)*stoi(codi[j+2]))*2;
+                            cout<<"Acréssimo de R$" <<fixed<<sal<< +" devido a "+codi[j+2]+"h00min de horas extras."<<endl;
+                            sal = sal + func[i]->getSalario();
+                            cout<<"Descontos:"<<endl;
+                            cout<<"INSS: "<<endl;
+                            if(sal <= 1212)
+                            {   
+                                cout << "7,5% -> R$"<<fixed<<sal * 0.075<<endl;
+                                codi.push_back(to_string(sal *0.075));                            
+                                sal -= sal * 0.075;
+                            }
+                            else if(sal <= 2427.35)
+                            {                                                
+                                cout << "9% -> R$"<<fixed<<sal * 0.09<<endl;                            
+                                codi.push_back(to_string(sal * 0.09));
+                                sal -= sal * 0.09;        
+                            }
+                            else if(sal <= 3641.03)
+                            {                                        
+                                cout << "12% -> R$"<<fixed<<sal * 0.12<<endl;
+                                codi.push_back(to_string(sal* 0.12));
+                                sal -= sal * 0.12;
+                            }
+                            else
+                            {                                                
+                                cout << "14% -> R$"<<fixed<<sal * 0.14<<endl; 
+                                codi.push_back(to_string(sal * 0.14));                           
+                                sal -= sal * 0.14;        
+                            }
+                            cout<<"IRRF: "<<endl;
+                            if (sal < 1903.99)
+                            {
+                                cout << "0% -> R$"<<fixed<<0<<endl;
+                                codi.push_back(to_string(0));                                                       
+                            }
+                            else if(sal > 1903.99 && sal <= 2826.65)
+                            {                               
+                                cout << "7,5% -> R$"<<fixed<<sal * 0.075<<endl;  
+                                codi.push_back(to_string(sal * 0.075));                                                     
+                                sal -= sal * 0.075;
+                            }
+                            else if(sal<= 3751.05)
+                            {                                                        
+                                cout << "15% -> R$"<<fixed<<sal * 0.15<<endl;        
+                                codi.push_back(to_string(sal * 0.15));                           
+                                sal -= sal * 0.15;                    
+                            }
+                            else if(sal <= 4664.68)
+                            {                                                
+                                cout << "12% -> R$"<<fixed<<sal * 0.225<<endl;
+                                codi.push_back(to_string(sal * 0.225));                           
+                                sal -= sal * 0.225;
+                            }
+                            else
+                            {                                                        
+                                cout << "14% -> R$"<<fixed<<sal * 0.227<<endl;                            
+                                codi.push_back(to_string(sal * 0.227));                           
+                                sal -= sal * 0.227;
+                            }
+                            cout << "O salário liquido é de: R$" <<fixed<<sal<<endl;
+                            cout << "O total de dias de trabalho são: "+codi[j+1]<<endl;
+                            codi.push_back(to_string(sal));
+                            return codi;
                         }
-                        else if(sal > 1903.99 && sal <= 2826.65)
-                        {                               
-                            cout << "7,5% -> R$"<<fixed<<sal * 0.075<<endl;                            
-                            sal -= sal * 0.075;
-                        }
-                        else if(sal<= 3751.05)
-                        {                                                        
-                            cout << "15% -> R$"<<fixed<<sal * 0.15<<endl;        
-                            sal -= sal * 0.15;                    
-                        }
-                        else if(sal <= 4664.68)
-                        {                                                
-                            cout << "12% -> R$"<<fixed<<sal * 0.225<<endl;
-                            sal -= sal * 0.225;
-                        }
-                        else
-                        {                                                        
-                            cout << "14% -> R$"<<fixed<<sal * 0.227<<endl;                            
-                            sal -= sal * 0.227;
-                        }
-                        cout << "O salário liquido é de: R$" <<sal<<endl;
-                        cout << "O total de dias de trabalho são: "+codi[j+1]<<endl;
-                        return codi;
+                    }    
+                }
+                else//anual
+                {
+                    double salF = 0, descInssT=0, descIrrfT=0, acresF = 0;
+                    int dT =0, hrET = 0;
+                    for (int j = 0; j < codi.size(); j++)
+                    {   
+                        for ( int p = 1; p < 13; p++)
+                        {
+                            if(func[i]->getCodigo()+"m"+to_string(p) == codi[j])
+                            {
+                                dT += stoi(codi[j+1]);//Dias totais
+                                hrET += stoi(codi[j+2]);//Horas extras totais
+                                descInssT += stod(codi[j+3]);//Desc inss total
+                                descIrrfT += stod(codi[j+4]);//Desc inss total
+                                salF += stod(codi[j+5]);//salario total
+                            }
+                        }                                                
                     }
-                }       
+                    acresF = salF-(func[i]->getSalario()*12)-descInssT-descIrrfT;
+                    cout <<"Empregado: "+func[i]->getNome()<<endl;
+                    cout.precision(2);
+                    cout <<"Salário base (anual): R$" << fixed<<((func[i]->getSalario())*12)<<endl;                    
+                    cout<<"Acréssimo de R$" <<fixed<<acresF<< +" devido a "<<hrET<<"h00min de horas extras no ano."<<endl;                    
+                    cout<<"Descontos totais:"<<endl;
+                    cout<<"INSS: "<<endl;
+                    cout<<"R$"<<fixed<<descInssT<<endl;
+                    cout<<"IRRF: "<<endl;
+                    cout<<"R$"<<fixed<<descIrrfT<<endl;
+                    cout << "O salário liquido é de: R$" <<fixed<<salF<<endl;
+                    cout << "O total de dias de trabalho são: "<<dT<<endl;
+
+                }
+                   
             }
         }
         break;
-    case 2:
-        
-        
+    
+    case 2://Empresa
         break;
     
     default:

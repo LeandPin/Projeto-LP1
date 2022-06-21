@@ -413,7 +413,7 @@ int main()
                 folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,mesOUano,folhasCalculadas,cod);
                 break;
             case 2://ano 365 dias
-                for (int y = 1; y <= 12; y++)
+                for (int y = 1; y <= 13; y++)
                 {
                     folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,y,folhasCalculadas,cod);
                 }
