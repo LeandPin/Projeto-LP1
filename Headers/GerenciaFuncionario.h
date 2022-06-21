@@ -18,7 +18,7 @@ public:
     void ExibirListaGeral(vector <Funcionario *> func);
     void Busca(int tipo, vector <Funcionario *> func);
     void AumentarSalarios(vector <Funcionario *> func);
-    vector<string> ImprimirFolhaSalario(vector <Funcionario *> func, int opc,vector<string> codi);
+    vector<string> ImprimirFolhaSalario(vector <Funcionario *> func, int opc, int mesOUano,vector<string> codi, string cod);
     int disponibilidadeCod(string cod, vector <Funcionario *> func);
 
 };

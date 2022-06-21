@@ -292,7 +292,7 @@ int Menu()
 int main()
 {
     string cod;
-    int opc;
+    int opc, mesOUano;
     GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
     vector<string> folhasCalculadas;    
@@ -373,15 +373,60 @@ int main()
             gerenciador->Busca(opc, funcionarios);
             cin.ignore();
             break;
+        
         case 8://Calcular folha salarial
             cin.ignore();
             cout << "Escolha a operação que você deseja realizar:"<< endl;
             cout<<" 1. Folha de salário do funcionário" << endl;
             cout<<" 2. Folha salarial empresa"<< endl;
             cin >> opc;
-            folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,folhasCalculadas);
+            system("clear||cls");
+            cin.ignore();
+            cout << "O que você deseja ?"<<endl;
+            cout << "1. Folha salario de um mês"<<endl;
+            cout << "2. Folha salario de um ano"<<endl;
+            cin >> mesOUano;
+            cin.ignore();
+            system("clear||cls");
+            cout << "Digite o código do funcionário:"<<endl;
+            getline(cin,cod);
+            system("clear||cls");
+            switch (mesOUano)
+            {
+            case 1:
+                system("clear||cls");
+                cout << "Qual o mês ?"<<endl;
+                cout << "1. Janeiro"<<endl;//31
+                cout << "2. Fevereiro"<<endl;//28
+                cout << "3. Março"<<endl;//31
+                cout << "4. Abril"<<endl;//30
+                cout << "5. Maio"<<endl;//31
+                cout << "6. Junho"<<endl;//30
+                cout << "7. Julho"<<endl;//31
+                cout << "8. Agosto"<<endl;//31
+                cout << "9. Setembro"<<endl;//30
+                cout << "10. Outubro"<<endl;//31
+                cout << "11. Novembro"<<endl;//30
+                cout << "12. Dezembro"<<endl;//31
+                cin >> mesOUano;
+                cin.ignore();
+                folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,mesOUano,folhasCalculadas,cod);
+                break;
+            case 2://ano 365 dias
+                cout<<"ANO!"<<endl;
+                for (int y = 1; y <= 12; y++)
+                {
+                    cout<<"recurssão"<<endl;
+                    folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,y,folhasCalculadas,cod);
+                }
+                mesOUano = 365;
+                break;
+            default:
+                break;
+            }
             cin.ignore();
             break;
+        
         case 9:
             return 0;
             break;
