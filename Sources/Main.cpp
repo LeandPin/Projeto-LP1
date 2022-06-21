@@ -36,27 +36,39 @@ void CapturarRosto(String cod)
             Mat frame; 
             cap >> frame; 
             imshow("Webcam", frame);
+            
             if(pollKey() >= 0) 
             {
                 int k = waitKey(0);
                 if(k == 's' || k == 'S') //se apertar s ele salva exatamente no frame que está sendo mostrado no display
                 {
 
-                    img = frame;
-                    break;    
+                    img = frame; 
+                }
+                resize(img, img, Size(img.size().width/scale,img.size().height/scale));
+                face.detectMultiScale(img, facesRect, 1.1, 4, CASCADE_SCALE_IMAGE, Size(20, 20));
+                for (size_t i = 0; i < facesRect.size(); i++)
+                { 
+                    facesCortadas.push_back(img(facesRect[i]));
+                }
+                if(facesCortadas.size()>1)
+                {
+                    cout<<"Deve ser registrado apenas um rosto"<<endl;
+                }
+                else if (facesCortadas.size() == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    cout<<"Rosto não encontrado, siga os passos listados e tente novamente"<<endl;
+                    continue;
                 }
             }
         }
         destroyAllWindows();
     }
     
-    resize(img, img, Size(img.size().width/scale,img.size().height/scale));
-    face.detectMultiScale(img, facesRect, 1.1, 4, CASCADE_SCALE_IMAGE, Size(20, 20));
-    
-    for (size_t i = 0; i < facesRect.size(); i++)
-    { 
-        facesCortadas.push_back(img(facesRect[i]));
-    }
     for (int i = 0; i < facesCortadas.size(); i++)
     {
         resize(facesCortadas[i], facesCortadas[i], Size(300,300));
