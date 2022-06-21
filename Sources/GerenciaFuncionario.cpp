@@ -429,7 +429,136 @@ int GerenciaFuncionario::disponibilidadeCod(string cod, vector <Funcionario *> f
         return 0;
     }
 }
-void GerenciaFuncionario::ImprimirFolhaSalarial()
+vector<string>  GerenciaFuncionario::ImprimirFolhaSalario(vector <Funcionario *> func, int opc, vector<string> codi)
 {
+    string cod, codFolhaCalc;
+    int aux, rDias, rHorasEx, mesOUano;
     
+    system("clear||cls");
+    cin.ignore();
+    cout << "O que você deseja ?"<<endl;
+    cout << "1. Folha salario de um mês"<<endl;
+    cout << "2. Folha salario de um ano"<<endl;
+    cin >> aux;
+    cin.ignore();
+    switch (aux)
+    {
+    case 1:
+        system("clear||cls");
+        cout << "Qual o mês ?"<<endl;
+        cout << "1. Janeiro"<<endl;//31
+        cout << "2. Fevereiro"<<endl;//28
+        cout << "3. Março"<<endl;//31
+        cout << "4. Abril"<<endl;//30
+        cout << "5. Maio"<<endl;//31
+        cout << "6. Junho"<<endl;//30
+        cout << "7. Julho"<<endl;//31
+        cout << "8. Agosto"<<endl;//31
+        cout << "9. Setembro"<<endl;//30
+        cout << "10. Outubro"<<endl;//31
+        cout << "11. Novembro"<<endl;//30
+        cout << "12. Dezembro"<<endl;//31
+        cin >> mesOUano;
+        break;
+    case 2://ano 365 dias
+        mesOUano = 365;
+        break;
+    default:
+        break;
+    }
+
+    switch (opc)
+    {
+    case 1:
+        system("clear||cls");
+        cin.ignore();
+        cout << "Digite o código do funcionário:"<<endl;
+        getline(cin,cod);
+        system("clear||cls");
+        for (int i = 0; i < func.size(); i++) 
+        {
+            if(cod == func[i]->getCodigo())
+            {
+                //caso o vector esteja vazio
+                if (codi.size() <= 0)
+                {
+                    cout<<"Calculando folha salário do mês "+to_string(mesOUano)+" pela primeira vez:"<<endl;   
+                    if(mesOUano == 2) //28 dias
+                    {
+                        rDias = rand() % 29;
+                    }
+                    else if (mesOUano == 4 ||mesOUano == 6 || mesOUano == 9 || mesOUano == 11 )//30
+                    {
+                        rDias = rand() % 31;
+                    }
+                    else if (mesOUano > 0 && mesOUano < 13)//31 dias
+                    {
+                        rDias = rand() % 32;
+                    }
+                    //Com a carga horaria maxima mensal de 220h
+                    rHorasEx = rand() % 221;
+                    codFolhaCalc = cod+"m"+to_string(mesOUano);
+                    codi.push_back(codFolhaCalc);
+                    codi.push_back(to_string(rDias));
+                    codi.push_back(to_string(rHorasEx));
+                    for (int j = 0; j < codi.size(); j++)
+                    {   
+                        if(func[i]->getCodigo()+"m"+to_string(mesOUano) == codi[j])
+                        {
+                            cout << func[i]->getNome()+" trabalhou " + codi[j+1]+" dias e teve "+codi[j+2]+" horas extras."<<endl;
+                            return codi;
+                        }
+                    }
+                }
+                else
+                {      
+                    for (int j = 0; j < codi.size(); j++)
+                    {   
+                        if(func[i]->getCodigo()+"m"+to_string(mesOUano) == codi[j])
+                        {
+                            cout<< "Folha do mês "+to_string(mesOUano)+" já calculada :"<< endl;
+                            cout << func[i]->getNome()+" trabalhou " + codi[j+1]+" dias e teve "+codi[j+2]+" horas extras."<<endl;
+                            return codi;
+                        }
+                    }
+                    cout<<"Calculando folha salário do mês "+to_string(mesOUano)+" pela primeira vez:"<<endl;   
+                    if(mesOUano == 2) //28 dias
+                    {
+                        rDias = rand() % 29;
+                    }
+                    else if (mesOUano == 4 ||mesOUano == 6 || mesOUano == 9 || mesOUano == 11 )//30
+                    {
+                        rDias = rand() % 31;
+                    }
+                    else if (mesOUano > 0 && mesOUano < 13)//31 dias
+                    {
+                        rDias = rand() % 32;
+                    }
+                    //Com a carga horaria maxima mensal de 220h
+                    rHorasEx = rand() % 221;
+                    codFolhaCalc = cod+"m"+to_string(mesOUano);
+                    codi.push_back(codFolhaCalc);
+                    codi.push_back(to_string(rDias));
+                    codi.push_back(to_string(rHorasEx));
+                    for (int j = 0; j < codi.size(); j++)
+                    {   
+                        if(func[i]->getCodigo()+"m"+to_string(mesOUano) == codi[j])
+                        {
+                            cout << func[i]->getNome()+" trabalhou " + codi[j+1]+" dias e teve "+codi[j+2]+" horas extras."<<endl;
+                            return codi;
+                        }
+                    }
+                }       
+            }
+        }
+        break;
+    case 2:
+        
+        
+        break;
+    
+    default:
+        break;
+    }
+    return codi;        
 }

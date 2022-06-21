@@ -12,7 +12,6 @@
 using namespace cv;
 using namespace std;
 
-//Não conseguir detectar rosto
 void CapturarRosto(String cod)
 {
     double scale = 1.0;
@@ -40,11 +39,7 @@ void CapturarRosto(String cod)
             if(pollKey() >= 0) 
             {
                 int k = waitKey(0);
-                if(k == 's' || k == 'S') //se apertar s ele salva exatamente no frame que está sendo mostrado no display
-                {
-
-                    img = frame; 
-                }
+                img = frame; 
                 resize(img, img, Size(img.size().width/scale,img.size().height/scale));
                 face.detectMultiScale(img, facesRect, 1.1, 4, CASCADE_SCALE_IMAGE, Size(20, 20));
                 for (size_t i = 0; i < facesRect.size(); i++)
@@ -258,7 +253,6 @@ void CadastrarFunc(vector<Funcionario *>* func,GerenciaFuncionario *gerenciador)
         cout << "Será realizado a captura da face do Funcioário cadastrado, intruções para a captura ser bem sucedida :"<< endl;
         cout << "1. Imagem nitida olhando para camêra com um boa iluminação" << endl;
         cout << "2. Digite qualquer tecla para estar capturando a foto"<<endl;
-        cout << "3. Caso a foto ficou agradavél para você basta apertar a tecla \" S\" para estar salvando, caso a foto não tenha ficado agradável basta apertar qualquer tecla diferente de \"S\" para estar realizando uma nova captura" << endl;
         
         CapturarRosto(codigo);
         
@@ -288,7 +282,8 @@ int Menu()
     cout<<" 5. Aumentar Salário"<< endl;
     cout<<" 6. Editar Funcionário"<< endl;
     cout<<" 7. Buscar Funcionário"<< endl;
-    cout<<" 8. Sair"<< endl;
+    cout<<" 8. Calcular folha salarial"<< endl;
+    cout<<" 9. Sair"<< endl;
     cin >> escolha;
     system("clear||cls");
     return escolha;
@@ -300,6 +295,7 @@ int main()
     int opc;
     GerenciaFuncionario *gerenciador = new GerenciaFuncionario;
     vector<Funcionario*> funcionarios;
+    vector<string> folhasCalculadas;    
     funcionarios = LerArquivo();
     
     while (1)
@@ -377,8 +373,16 @@ int main()
             gerenciador->Busca(opc, funcionarios);
             cin.ignore();
             break;
-        
-        case 8:
+        case 8://Calcular folha salarial
+            cin.ignore();
+            cout << "Escolha a operação que você deseja realizar:"<< endl;
+            cout<<" 1. Folha de salário do funcionário" << endl;
+            cout<<" 2. Folha salarial empresa"<< endl;
+            cin >> opc;
+            folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,folhasCalculadas);
+            cin.ignore();
+            break;
+        case 9:
             return 0;
             break;
 
