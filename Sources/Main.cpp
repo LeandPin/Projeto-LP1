@@ -413,13 +413,10 @@ int main()
                 folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,mesOUano,folhasCalculadas,cod);
                 break;
             case 2://ano 365 dias
-                cout<<"ANO!"<<endl;
                 for (int y = 1; y <= 12; y++)
                 {
-                    cout<<"recurssão"<<endl;
                     folhasCalculadas=gerenciador->ImprimirFolhaSalario(funcionarios,opc,y,folhasCalculadas,cod);
                 }
-                mesOUano = 365;
                 break;
             default:
                 break;
