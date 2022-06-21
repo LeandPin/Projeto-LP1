@@ -3,121 +3,61 @@
 -
 -
 1
-Operador
-1
-1
-1
-1
+Jean Carlos
+(81) 823123483
+05/06/2000
+R. Padre Nestor de Alencar, 7596 - Barra de Jangada - Jaboatão dos Guararapes/PE
+3500
 3
-asup2
-af3
+Estoque de componentes eletrônicos
+Adiministração
 -
 3
-Diretor
-3
-3
-3
-3
+Cleidson Camutanga
+(83)987987123
+14/12/2004
+R. dos corais, 508 - Prazeres - Jaboatão dos Guararapes/PE
+1500
 4
 -
-af4
-fa
-4
-Presidente
-4
-4
-4
-4
-1
--
--
--
-2
-TEstCam
-2
-2
-2
-2
-1
--
--
--
-5
-TestCam2
-2
-2
-2
-2
-1
--
--
--
-7
-Testcam3
-7
-7
-7
-7
-1
--
--
--
-0
-Test4
-4
-4
-4
-4
-1
--
--
--
-100
-T1FolhaSal
-1
-1
-1
-100
-1
--
--
--
-200
-FolhaSalT2
-1
-1
-1
-100
-3
-Dep. Juridico
-Direito
--
-300
-T3FolhaSal
-3
-3
-3
-300
-4
--
-T.i
+Engenharia da computação
 Doutor
-400
-T4FolhaSal
 4
-4
-4
-400
+Leanderson Pinheiro
+(83)123456789
+16/06/1999
+R. Presidente Nilo Peçanha, 901 - Apto. 566 - Imbiribeira - Recife/PE
+10500
 1
 -
 -
 -
-500
-T5FolhaSal
+2
+Adriano Andrade
+(84)432164123
+21/09/2005
+R. das palmeiras, 77 - Bancarios - João Pessoa/PB
+2500
+1
+-
+-
+-
 5
-5
-5
-500
+André Andrade 
+(21)463172352
+14/04/2004
+R. dos sonhos, 55 - Barra de Jangada - Jaboatão dos Guararapes/PE
+1200
+2
+Departamento Juridico
+-
+-
+7
+Vinicius Junior
+(21) 812348238
+07/08/2008
+R. do hexa, 6 - Candeias - Jaboatão dos Guararapes/PE 
+3500
 1
 -
 -
@@ -126,5 +66,5 @@ T5FolhaSal
 Pedro Ricardo Cavalcante Silva Filho
 (81)987654321
 03/09/2001
-R. dos pescadores 301 - Apto. 401 - Ponta dos Seixas - João Pessoa/PB
+R. dos pescadores, 301 - Apto. 401 - Ponta dos Seixas - João Pessoa/PB
 1200
