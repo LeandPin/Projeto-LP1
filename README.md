@@ -17,7 +17,7 @@ Sinta-se a vontade para utilizar os códigos deste repositório para fins de apr
 Caso queira discutir sobre algum código, ou solicitar ajuda pode nos contatar através desses perfis:
 
 * Adriano Andrade :</br>
-[![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)]()
+[![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)](https://github.com/adrianoandrade21)
 * Leanderson Pinheiro :</br> 
 [![Github](https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github&logoColor=white)](https://github.com/LeandPin)
 * Pedro Cavalcante :</br> 
